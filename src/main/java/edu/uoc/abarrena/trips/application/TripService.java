@@ -1,4 +1,4 @@
 package edu.uoc.abarrena.trips.application;
 
-public interface Booking {
+public interface TripService {
 }

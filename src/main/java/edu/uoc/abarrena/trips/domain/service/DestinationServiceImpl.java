@@ -1,4 +1,4 @@
 package edu.uoc.abarrena.trips.domain.service;
 
-public class CruiseService {
+public class DestinationServiceImpl {
 }

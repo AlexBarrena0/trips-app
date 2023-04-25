@@ -1,4 +1,4 @@
 package edu.uoc.abarrena.trips.domain.service;
 
-public class RatingService {
+public class RatingServiceImpl {
 }
