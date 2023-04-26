@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/tfg
+    url: jdbc:postgresql://localhost:5432/?currentSchema=trip
     username: abarrena0
     password: abarrena0_tfg
     driver-class-name: org.postgresql.Driver

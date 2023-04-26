@@ -11,9 +11,9 @@ import java.util.List;
 @Mapper
 public interface DestinationMapper {
 
-    @Insert("INSERT INTO DESTINATION (ID, DESCRIPTION) VALUES (#{id}, #{description})")
-    @Options(useGeneratedKeys = true, keyProperty = "id")
-    DestinationEntity save(DestinationEntity destinationEntity);
+    @Insert("INSERT INTO DESTINATION (DESCRIPTION) VALUES (#{description})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
+    void save(DestinationEntity destinationEntity);
 
     @Select("SELECT * FROM DESTINATION WHERE ID = #{id}")
     DestinationEntity findById(Long id);

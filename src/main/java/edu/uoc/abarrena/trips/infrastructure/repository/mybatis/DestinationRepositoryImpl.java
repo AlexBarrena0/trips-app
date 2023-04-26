@@ -18,7 +18,9 @@ public class DestinationRepositoryImpl implements DestinationRepository {
     }
     @Override
     public Long save(Destination destination) {
-        return destinationMapper.save(DestinationEntity.fromDomain(destination)).getId();
+        DestinationEntity destinationEntity = DestinationEntity.fromDomain(destination);
+        destinationMapper.save(destinationEntity);
+        return destinationEntity.getId();
     }
 
     @Override
