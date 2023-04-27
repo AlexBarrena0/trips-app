@@ -6,3 +6,7 @@ spring:
     driver-class-name: org.postgresql.Driver
 server:
   port: 8081
+application:
+  name: trip
+  version: 1.0.0
+  defaultLanguage: en_US

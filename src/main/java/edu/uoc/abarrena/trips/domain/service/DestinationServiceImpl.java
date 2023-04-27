@@ -18,7 +18,7 @@ public class DestinationServiceImpl implements DestinationService {
 
     @Override
     public Long createDestination(Destination destination) {
-        return null;
+        return destinationRepository.save(destination);
     }
 
     @Override
