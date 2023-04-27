@@ -1,6 +1,8 @@
 package edu.uoc.abarrena.trips.domain.service;
 
 import edu.uoc.abarrena.trips.application.DestinationService;
+import edu.uoc.abarrena.trips.domain.exceptions.DestinationDuplicatedException;
+import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.model.Destination;
 import edu.uoc.abarrena.trips.domain.repository.DestinationRepository;
 import org.springframework.stereotype.Service;
@@ -17,17 +19,24 @@ public class DestinationServiceImpl implements DestinationService {
     }
 
     @Override
-    public Long createDestination(Destination destination) {
+    public Long createDestination(Destination destination) throws DestinationDuplicatedException {
+        if (destinationRepository.findByName(destination.getDescription()) != null) {
+            throw new DestinationDuplicatedException("Destination already exists");
+        }
         return destinationRepository.save(destination);
     }
 
     @Override
     public Destination findDestinationById(Long id) {
-        return null;
+        Destination destination = destinationRepository.findById(id);
+        if (destination == null) {
+            throw new EntityNotFoundException("Destination not found");
+        }
+        return destination;
     }
 
     @Override
     public List<Destination> findAllDestinations() {
-        return null;
+        return destinationRepository.findAll();
     }
 }
