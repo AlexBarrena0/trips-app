@@ -1,27 +1,26 @@
 package edu.uoc.abarrena.trips.infrastructure.rest.dto.response;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class Response<T> {
+public class Result<T> {
     protected Boolean success;
     protected String message;
     protected T response;
 
-    public Response(T response) {
+    public Result(T response) {
         this.success = true;
         this.response = response;
     }
 
-    public Response(String message) {
+    public Result(String message) {
         this.success = false;
         this.message = message;
     }
 
-    public Response(T response, String message) {
+    public Result(T response, String message) {
         this.success = true;
         this.response = response;
         this.message = message;
