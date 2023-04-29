@@ -1,7 +1,7 @@
 package edu.uoc.abarrena.trips.infrastructure.rest;
 
 import edu.uoc.abarrena.trips.application.DestinationService;
-import edu.uoc.abarrena.trips.application.mapper.DestinationMapper;
+import edu.uoc.abarrena.trips.application.converter.DestinationConverter;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateDestinationDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.DestinationDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.Result;
@@ -32,7 +32,7 @@ public class DestinationController {
         public Result<Long> createDestination(@RequestBody CreateDestinationDto createDestinationDto) {
             log.trace("Creating destination " + createDestinationDto);
 
-            Long destinationId = destinationService.createDestination(DestinationMapper.INSTANCE.toDomain(createDestinationDto));
+            Long destinationId = destinationService.createDestination(DestinationConverter.INSTANCE.toDomain(createDestinationDto));
 
             return new Result<Long>(destinationId, "Destination created successfully");
         }
@@ -41,7 +41,7 @@ public class DestinationController {
         public Result<List<DestinationDto>> findAllDestinations() {
             log.trace("Retrieving all destinations");
 
-            List<DestinationDto> destinations = destinationService.findAllDestinations().stream().map(DestinationMapper.INSTANCE::toDto).toList();
+            List<DestinationDto> destinations = destinationService.findAllDestinations().stream().map(DestinationConverter.INSTANCE::toDto).toList();
             return new Result<List<DestinationDto>>(destinations);
         }
 

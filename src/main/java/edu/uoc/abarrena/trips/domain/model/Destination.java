@@ -13,4 +13,5 @@ public class Destination {
 
     private Long id;
     private String description;
+
 }

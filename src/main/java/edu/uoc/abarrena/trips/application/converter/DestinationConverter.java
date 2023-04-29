@@ -1,4 +1,4 @@
-package edu.uoc.abarrena.trips.application.mapper;
+package edu.uoc.abarrena.trips.application.converter;
 
 import edu.uoc.abarrena.trips.domain.model.Destination;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.DestinationEntity;
@@ -7,18 +7,22 @@ import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.DestinationDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
-public interface DestinationMapper {
+import java.util.List;
 
-    public static final DestinationMapper INSTANCE = Mappers.getMapper(DestinationMapper.class);
+@Mapper(componentModel = "spring")
+public interface DestinationConverter {
+
+    public static final DestinationConverter INSTANCE = Mappers.getMapper(DestinationConverter.class);
 
     DestinationDto toDto(Destination destination);
 
-    Destination toDomain(DestinationDto destinationDto);
-
     Destination toDomain(DestinationEntity destinationEntity);
 
+    List<Destination> toDomain(List<DestinationEntity> destinationEntity);
+
     Destination toDomain(CreateDestinationDto createDestinationDto);
+
+    DestinationEntity toEntity(Destination destination);
 
 
 

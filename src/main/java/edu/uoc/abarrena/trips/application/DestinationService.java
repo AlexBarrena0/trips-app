@@ -1,5 +1,7 @@
 package edu.uoc.abarrena.trips.application;
 
+import edu.uoc.abarrena.trips.domain.exceptions.DestinationDuplicatedException;
+import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.model.Destination;
 
 import java.util.List;
@@ -14,14 +16,14 @@ public interface DestinationService {
      * @param destination the destination to create
      * @return the id of the created destination
      */
-    public Long createDestination(Destination destination);
+    public Long createDestination(Destination destination) throws DestinationDuplicatedException;
 
     /**
      * Finds a destination by its id
      * @param id the id of the destination to find
      * @return the destination with the given id
      */
-    public Destination findDestinationById(Long id);
+    public Destination findDestinationById(Long id) throws EntityNotFoundException;
 
     /**
      * Finds all the destinations

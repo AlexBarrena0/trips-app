@@ -1,5 +1,6 @@
 package edu.uoc.abarrena.trips.infrastructure.repository.mybatis;
 
+import edu.uoc.abarrena.trips.application.converter.DestinationConverter;
 import edu.uoc.abarrena.trips.domain.model.Destination;
 import edu.uoc.abarrena.trips.domain.repository.DestinationRepository;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.DestinationEntity;
@@ -18,23 +19,23 @@ public class DestinationRepositoryImpl implements DestinationRepository {
     }
     @Override
     public Long save(Destination destination) {
-        DestinationEntity destinationEntity = DestinationEntity.fromDomain(destination);
+        DestinationEntity destinationEntity = DestinationConverter.INSTANCE.toEntity(destination);
         destinationMapper.save(destinationEntity);
         return destinationEntity.getId();
     }
 
     @Override
     public Destination findById(Long id) {
-        return destinationMapper.findById(id).toDomain();
+        return DestinationConverter.INSTANCE.toDomain(destinationMapper.findById(id));
     }
 
     @Override
     public Destination findByName(String name) {
-        return destinationMapper.findByDescription(name).toDomain();
+        return DestinationConverter.INSTANCE.toDomain(destinationMapper.findByDescription(name));
     }
 
     @Override
     public List<Destination> findAll() {
-        return destinationMapper.findAll().stream().map(DestinationEntity::toDomain).toList();
+        return DestinationConverter.INSTANCE.toDomain(destinationMapper.findAll());
     }
 }

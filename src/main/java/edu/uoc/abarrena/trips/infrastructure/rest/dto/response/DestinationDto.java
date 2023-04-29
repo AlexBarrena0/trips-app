@@ -11,5 +11,4 @@ public class DestinationDto {
 
     private Long id;
     private String description;
-
 }
