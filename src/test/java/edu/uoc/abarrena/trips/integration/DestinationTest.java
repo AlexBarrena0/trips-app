@@ -1,5 +1,7 @@
 package edu.uoc.abarrena.trips.integration;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateDestinationDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.DestinationDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.Result;
@@ -50,7 +52,7 @@ class DestinationTest {
     @Test
     public void findAllDestinations_Success() {
         ResponseEntity<Result> response = restTemplate.getForEntity("/destinations", Result.class);
-        Result<List<DestinationDto>> result = response.getBody();
+        Result<List<DestinationDto>> result = new ObjectMapper().convertValue(response.getBody(), new TypeReference<Result<List<DestinationDto>>>() {});;
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(2, result.getResponse().size());

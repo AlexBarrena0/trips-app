@@ -34,7 +34,7 @@ class DestinationControllerUnitTest extends BaseTest {
     private DestinationService destinationService;
 
     @Test
-    public void createDestination_Success() throws Exception {
+    void createDestination_Success() throws Exception {
         CreateDestinationDto createDestinationDto = new CreateDestinationDto("Maldives");
         Destination destination = new Destination(null, "Maldives");
         Long expectedId = 1L;
@@ -53,7 +53,7 @@ class DestinationControllerUnitTest extends BaseTest {
     }
 
     @Test
-    public void createDestination_ErrorDuplicate() throws Exception {
+    void createDestination_ErrorDuplicate() throws Exception {
         CreateDestinationDto createDestinationDto = new CreateDestinationDto("Maldives");
         Destination destination = new Destination(null, "Maldives");
         when(destinationService.createDestination(destination)).thenThrow(new DestinationDuplicatedException());
@@ -71,7 +71,7 @@ class DestinationControllerUnitTest extends BaseTest {
     }
 
     @Test
-    public void findAllDestinations_Success() throws Exception {
+    void findAllDestinations_Success() throws Exception {
         Destination destination = new Destination(1L, "Maldives");
         Destination destination2 = new Destination(2L, "Red Sea");
         when(destinationService.findAllDestinations()).thenReturn(java.util.List.of(destination, destination2));

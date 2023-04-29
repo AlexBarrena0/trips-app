@@ -15,6 +15,7 @@ public interface DestinationService {
      * Creates a new destination
      * @param destination the destination to create
      * @return the id of the created destination
+     * @throws DestinationDuplicatedException if the destination already exists
      */
     public Long createDestination(Destination destination) throws DestinationDuplicatedException;
 
@@ -22,6 +23,7 @@ public interface DestinationService {
      * Finds a destination by its id
      * @param id the id of the destination to find
      * @return the destination with the given id
+     * @throws EntityNotFoundException if the destination is not found
      */
     public Destination findDestinationById(Long id) throws EntityNotFoundException;
 

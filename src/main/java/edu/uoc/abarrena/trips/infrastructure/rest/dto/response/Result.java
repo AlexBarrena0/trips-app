@@ -10,11 +10,6 @@ public class Result<T> {
     protected String message;
     protected T response;
 
-    public Result(T response) {
-        this.success = true;
-        this.response = response;
-    }
-
     public Result(String message) {
         this.success = false;
         this.message = message;

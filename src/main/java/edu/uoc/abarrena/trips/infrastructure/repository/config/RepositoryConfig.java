@@ -1,7 +1,10 @@
 package edu.uoc.abarrena.trips.infrastructure.repository.config;
 
+import edu.uoc.abarrena.trips.domain.repository.CruiseRepository;
 import edu.uoc.abarrena.trips.domain.repository.DestinationRepository;
+import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.CruiseRepositoryImpl;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.DestinationRepositoryImpl;
+import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.CruiseMapper;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.DestinationMapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -28,5 +31,10 @@ public class RepositoryConfig {
     @Bean
     public DestinationRepository destinationRepository(DestinationMapper destinationMapper) {
         return new DestinationRepositoryImpl(destinationMapper);
+    }
+
+    @Bean
+    public CruiseRepository cruiseRepository(CruiseMapper cruiseMapper) {
+        return new CruiseRepositoryImpl(cruiseMapper);
     }
 }

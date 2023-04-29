@@ -23,9 +23,8 @@ class DestinationRepositoryUnitTest extends BaseTest {
     private DestinationRepositoryImpl destinationRepository;
 
     @Test
-    public void save_saveDestination() {
+    void save_saveDestination() {
         Long expectedId = 1L;
-
         Destination destination = new Destination(expectedId, "Maldives");
 
         DestinationEntity destinationEntity = new DestinationEntity(expectedId, "Maldives");
@@ -38,7 +37,7 @@ class DestinationRepositoryUnitTest extends BaseTest {
     }
 
     @Test
-    public void findById_returnDestination() {
+    void findById_returnDestination() {
         Long id = 1L;
         DestinationEntity destinationEntity = new DestinationEntity(id, "Maldives");
         when(destinationMapper.findById(id)).thenReturn(destinationEntity);
@@ -51,7 +50,7 @@ class DestinationRepositoryUnitTest extends BaseTest {
     }
 
     @Test
-    public void findByName_returnDestination() {
+    void findByName_returnDestination() {
         String name = "New York";
         DestinationEntity destinationEntity = new DestinationEntity(1L, name);
         when(destinationMapper.findByDescription(name)).thenReturn(destinationEntity);
@@ -64,7 +63,7 @@ class DestinationRepositoryUnitTest extends BaseTest {
     }
 
     @Test
-    public void findAll_returnDestinations() {
+    void findAll_returnDestinations() {
         List<DestinationEntity> destinationEntities = Arrays.asList(
                 new DestinationEntity(1L, "Maldives"),
                 new DestinationEntity(2L, "Red Sea")

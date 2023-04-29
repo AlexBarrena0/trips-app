@@ -25,12 +25,13 @@ class DestinationServiceUnitTest extends BaseTest {
     private DestinationServiceImpl destinationService;
 
     @Test
-    void createDestination_Success() throws DestinationDuplicatedException {
+    void createDestination_Success() {
         Destination destination = new Destination(null, "Maldives");
+        Long expectedId = 1L;
         when(destinationRepository.findByName(destination.getDescription())).thenReturn(null);
         when(destinationRepository.save(destination)).thenReturn(1L);
         Long id = destinationService.createDestination(destination);
-        assertEquals(1L, id);
+        assertEquals(expectedId, id);
     }
 
     @Test

@@ -1,15 +1,13 @@
-package edu.uoc.abarrena.trips.domain.model;
+package edu.uoc.abarrena.trips.infrastructure.rest.dto.response;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Cruise {
+public class CruiseDto {
 
     private Long id;
     private String name;
@@ -18,11 +16,4 @@ public class Cruise {
     private float avgRoomRating;
     private float avgCrewRating;
     private float avgFoodRating;
-
-    public Cruise(Long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
-
 }

@@ -6,8 +6,6 @@ import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateDestinationD
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.DestinationDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.Result;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +16,6 @@ import java.util.List;
 public class DestinationController {
 
         public static final String BASE_PATH = "/destinations";
-
-        @Autowired
-        private MessageSource messageSource;
 
         private final DestinationService destinationService;
 
@@ -42,7 +37,7 @@ public class DestinationController {
             log.trace("Retrieving all destinations");
 
             List<DestinationDto> destinations = destinationService.findAllDestinations().stream().map(DestinationConverter.INSTANCE::toDto).toList();
-            return new Result<List<DestinationDto>>(destinations);
+            return new Result<List<DestinationDto>>(destinations, null);
         }
 
 }
