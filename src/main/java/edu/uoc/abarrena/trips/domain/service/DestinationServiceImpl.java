@@ -21,7 +21,7 @@ public class DestinationServiceImpl implements DestinationService {
     @Override
     public Long createDestination(Destination destination) throws DestinationDuplicatedException {
         if (destinationRepository.findByName(destination.getDescription()) != null) {
-            throw new DestinationDuplicatedException("Destination already exists");
+            throw new DestinationDuplicatedException();
         }
         return destinationRepository.save(destination);
     }
