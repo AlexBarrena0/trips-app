@@ -55,7 +55,7 @@ class DestinationServiceUnitTest extends BaseTest {
     }
 
     @Test
-    void findAllDestinations() {
+    void findAllDestinations_Success() {
         List<Destination> destinations = new ArrayList<>();
         destinations.add(new Destination(1L, "Maldives"));
         destinations.add(new Destination(2L, "Red Sea"));
