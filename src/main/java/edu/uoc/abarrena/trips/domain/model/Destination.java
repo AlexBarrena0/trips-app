@@ -14,4 +14,7 @@ public class Destination {
     private Long id;
     private String description;
 
+    public Destination(Long id) {
+        this.id = id;
+    }
 }

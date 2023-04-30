@@ -11,7 +11,10 @@ import javax.validation.constraints.NotBlank;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateCruiseDto {
+public class UpdateCruiseDto {
+
+    @NotBlank(message = "Cruise id is required")
+    private Long id;
 
     @NotBlank(message = "Cruise name is required")
     @Max(value = 255, message = "Cruise name must be less than 255 characters")

@@ -36,7 +36,7 @@ public class DestinationController {
         public Result<List<DestinationDto>> findAllDestinations() {
             log.trace("Retrieving all destinations");
 
-            List<DestinationDto> destinations = destinationService.findAllDestinations().stream().map(DestinationConverter.INSTANCE::toDto).toList();
+            List<DestinationDto> destinations = DestinationConverter.INSTANCE.toDto(destinationService.findAllDestinations());
             return new Result<List<DestinationDto>>(destinations, null);
         }
 

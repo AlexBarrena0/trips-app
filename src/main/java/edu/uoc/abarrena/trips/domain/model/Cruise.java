@@ -20,6 +20,10 @@ public class Cruise {
     private float avgCrewRating;
     private float avgFoodRating;
 
+    public Cruise(Long id) {
+        this.id = id;
+    }
+
     public Cruise(Long id, String name, String description, int capacity) {
         this.id = id;
         this.name = name;

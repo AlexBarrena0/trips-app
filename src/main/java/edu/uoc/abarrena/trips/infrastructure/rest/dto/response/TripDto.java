@@ -1,4 +1,4 @@
-package edu.uoc.abarrena.trips.domain.model;
+package edu.uoc.abarrena.trips.infrastructure.rest.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,14 +9,13 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Trip {
-
+public class TripDto {
     private Long id;
     private String route;
     private LocalDate startDate;
     private LocalDate endDate;
     private Integer nDives;
     private Double price;
-    private Cruise cruise;
-    private Destination destination;
+    private CruiseDto cruise;
+    private DestinationDto destination;
 }

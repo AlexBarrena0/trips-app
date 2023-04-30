@@ -6,6 +6,7 @@ import edu.uoc.abarrena.trips.BaseTest;
 import edu.uoc.abarrena.trips.application.DestinationService;
 import edu.uoc.abarrena.trips.domain.exceptions.DestinationDuplicatedException;
 import edu.uoc.abarrena.trips.domain.model.Destination;
+import edu.uoc.abarrena.trips.factory.DestinationFactory;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateDestinationDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.DestinationDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.Result;
@@ -35,8 +36,8 @@ class DestinationControllerUnitTest extends BaseTest {
 
     @Test
     void createDestination_Success() throws Exception {
-        CreateDestinationDto createDestinationDto = new CreateDestinationDto("Maldives");
-        Destination destination = new Destination(null, "Maldives");
+        CreateDestinationDto createDestinationDto = DestinationFactory.createExistingDestinationDto();
+        Destination destination = DestinationFactory.destinationDomain(null);
         Long expectedId = 1L;
         when(destinationService.createDestination(destination)).thenReturn(expectedId);
 
@@ -54,8 +55,8 @@ class DestinationControllerUnitTest extends BaseTest {
 
     @Test
     void createDestination_ErrorDuplicate() throws Exception {
-        CreateDestinationDto createDestinationDto = new CreateDestinationDto("Maldives");
-        Destination destination = new Destination(null, "Maldives");
+        CreateDestinationDto createDestinationDto = DestinationFactory.createExistingDestinationDto();
+        Destination destination = DestinationFactory.destinationDomain(null);
         when(destinationService.createDestination(destination)).thenThrow(new DestinationDuplicatedException());
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/destinations")
@@ -72,9 +73,8 @@ class DestinationControllerUnitTest extends BaseTest {
 
     @Test
     void findAllDestinations_Success() throws Exception {
-        Destination destination = new Destination(1L, "Maldives");
-        Destination destination2 = new Destination(2L, "Red Sea");
-        when(destinationService.findAllDestinations()).thenReturn(java.util.List.of(destination, destination2));
+        List<Destination> destinationList = DestinationFactory.destinationListDomain();
+        when(destinationService.findAllDestinations()).thenReturn(destinationList);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/destinations")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -84,8 +84,8 @@ class DestinationControllerUnitTest extends BaseTest {
         Result<List<DestinationDto>> result = new ObjectMapper().readValue(responseJson, new TypeReference<Result<List<DestinationDto>>>() {});
 
         assertEquals(true, result.getSuccess());
-        assertEquals("Maldives", result.getResponse().get(0).getDescription());
-        assertEquals("Red Sea", result.getResponse().get(1).getDescription());
+        assertEquals(destinationList.get(0).getDescription(), result.getResponse().get(0).getDescription());
+        assertEquals(destinationList.get(1).getDescription(), result.getResponse().get(1).getDescription());
     }
 
 

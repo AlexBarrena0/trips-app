@@ -5,11 +5,11 @@ import edu.uoc.abarrena.trips.domain.exceptions.DestinationDuplicatedException;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.model.Destination;
 import edu.uoc.abarrena.trips.domain.repository.DestinationRepository;
+import edu.uoc.abarrena.trips.factory.DestinationFactory;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,7 +26,7 @@ class DestinationServiceUnitTest extends BaseTest {
 
     @Test
     void createDestination_Success() {
-        Destination destination = new Destination(null, "Maldives");
+        Destination destination = DestinationFactory.destinationDomain(null);
         Long expectedId = 1L;
         when(destinationRepository.findByName(destination.getDescription())).thenReturn(null);
         when(destinationRepository.save(destination)).thenReturn(1L);
@@ -36,30 +36,30 @@ class DestinationServiceUnitTest extends BaseTest {
 
     @Test
     void createDestination_ErrorDuplicate() {
-        Destination destination = new Destination(1L, "Maldives");
+        Destination destination = DestinationFactory.destinationDomain(null);
         when(destinationRepository.findByName(destination.getDescription())).thenReturn(destination);
         assertThrows(DestinationDuplicatedException.class, () -> destinationService.createDestination(destination));
     }
 
     @Test
     void findDestinationById_Success() {
-        Destination destination = new Destination(1L, "Maldives");
+        Long id = 1L;
+        Destination destination = DestinationFactory.destinationDomain(id);
         when(destinationRepository.findById(1L)).thenReturn(destination);
-        Destination result = destinationService.findDestinationById(1L);
+        Destination result = destinationService.findDestinationById(id);
         assertEquals(destination, result);
     }
 
     @Test
     void findDestinationById_NotFound() {
-        when(destinationRepository.findById(1L)).thenReturn(null);
-        assertThrows(EntityNotFoundException.class, () -> destinationService.findDestinationById(1L));
+        Long id = 1L;
+        when(destinationRepository.findById(id)).thenReturn(null);
+        assertThrows(EntityNotFoundException.class, () -> destinationService.findDestinationById(id));
     }
 
     @Test
     void findAllDestinations_Success() {
-        List<Destination> destinations = new ArrayList<>();
-        destinations.add(new Destination(1L, "Maldives"));
-        destinations.add(new Destination(2L, "Red Sea"));
+        List<Destination> destinations = DestinationFactory.destinationListDomain();
         when(destinationRepository.findAll()).thenReturn(destinations);
         List<Destination> result = destinationService.findAllDestinations();
         assertEquals(destinations, result);

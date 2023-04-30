@@ -1,4 +1,4 @@
-package edu.uoc.abarrena.trips.domain.model;
+package edu.uoc.abarrena.trips.infrastructure.rest.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,14 +9,10 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Trip {
+public class FindTripsFiltersDto {
 
-    private Long id;
-    private String route;
+    private Long cruiseId;
+    private Long destinationId;
     private LocalDate startDate;
     private LocalDate endDate;
-    private Integer nDives;
-    private Double price;
-    private Cruise cruise;
-    private Destination destination;
 }

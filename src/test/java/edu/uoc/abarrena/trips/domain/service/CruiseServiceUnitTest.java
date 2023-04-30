@@ -4,6 +4,7 @@ import edu.uoc.abarrena.trips.BaseTest;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.model.Cruise;
 import edu.uoc.abarrena.trips.domain.repository.CruiseRepository;
+import edu.uoc.abarrena.trips.factory.CruiseFactory;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -23,7 +24,7 @@ class CruiseServiceUnitTest extends BaseTest {
 
     @Test
     void createCruise_Success() {
-        Cruise cruise = new Cruise(null, "Cruise 1", "Cruise 1 description", 10);
+        Cruise cruise = CruiseFactory.cruiseDomain(null);
         Long expectedId = 1L;
         when(cruiseRepository.save(cruise)).thenReturn(expectedId);
         Long id = cruiseService.createCruise(cruise);
@@ -33,7 +34,7 @@ class CruiseServiceUnitTest extends BaseTest {
     @Test
     void findCruiseById_Success() {
         Long id = 1L;
-        Cruise expectedCruise = new Cruise(id, "Cruise 1", "Cruise 1 description",10);
+        Cruise expectedCruise = CruiseFactory.cruiseDomain(id);
         when(cruiseRepository.findById(id)).thenReturn(expectedCruise);
         Cruise actualCruise = cruiseService.findCruiseById(id);
         assertEquals(expectedCruise, actualCruise);
@@ -49,7 +50,7 @@ class CruiseServiceUnitTest extends BaseTest {
     @Test
     void updateCruise_Success() {
         Long id = 1L;
-        Cruise cruise = new Cruise(id, "Cruise 1", "Cruise 1 description", 10);
+        Cruise cruise = CruiseFactory.cruiseDomain(id);
         doNothing().when(cruiseRepository).update(cruise);
         cruiseService.updateCruise(cruise);
     }

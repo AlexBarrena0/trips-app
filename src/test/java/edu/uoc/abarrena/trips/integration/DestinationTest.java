@@ -2,6 +2,7 @@ package edu.uoc.abarrena.trips.integration;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.uoc.abarrena.trips.factory.DestinationFactory;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateDestinationDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.DestinationDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.Result;
@@ -29,7 +30,7 @@ class DestinationTest {
 
     @Test
     public void createDestination_Success() {
-        CreateDestinationDto createDestinationDto = new CreateDestinationDto("Maldives");
+        CreateDestinationDto createDestinationDto = DestinationFactory.createDestinationDto();
 
         ResponseEntity<Result> response = restTemplate.postForEntity("/destinations", createDestinationDto, Result.class);
         Result<Long> result = response.getBody();
@@ -40,7 +41,7 @@ class DestinationTest {
 
     @Test
     public void testCreateDestination_ErrorDuplicate() {
-        CreateDestinationDto createDestinationDto = new CreateDestinationDto("Red Sea");
+        CreateDestinationDto createDestinationDto = DestinationFactory.createExistingDestinationDto();
 
         ResponseEntity<Result> response = restTemplate.postForEntity("/destinations", createDestinationDto, Result.class);
         Result<Long> result = response.getBody();

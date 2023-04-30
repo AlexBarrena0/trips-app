@@ -3,6 +3,7 @@ package edu.uoc.abarrena.trips.infrastructure.rest;
 import edu.uoc.abarrena.trips.application.CruiseService;
 import edu.uoc.abarrena.trips.application.converter.CruiseConverter;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateCruiseDto;
+import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.UpdateCruiseDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.CruiseDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.Result;
 import lombok.extern.log4j.Log4j2;
@@ -40,11 +41,11 @@ public class CruiseController {
     }
 
     @PutMapping("/{id}")
-    public Result<Void> updateCruise(@PathVariable Long id, @RequestBody CreateCruiseDto createCruiseDto) {
+    public Result updateCruise(@PathVariable Long id, @RequestBody UpdateCruiseDto updateCruiseDto) {
         log.trace("Updating cruise " + id);
 
-        cruiseService.updateCruise(CruiseConverter.INSTANCE.toDomain(createCruiseDto));
+        cruiseService.updateCruise(CruiseConverter.INSTANCE.toDomain(updateCruiseDto));
 
-        return new Result<Void>(null, "Cruise updated successfully");
+        return new Result(null, "Cruise updated successfully");
     }
 }

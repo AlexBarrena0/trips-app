@@ -16,6 +16,8 @@ public interface DestinationConverter {
 
     DestinationDto toDto(Destination destination);
 
+    List<DestinationDto> toDto(List<Destination> destination);
+
     Destination toDomain(DestinationEntity destinationEntity);
 
     List<Destination> toDomain(List<DestinationEntity> destinationEntity);

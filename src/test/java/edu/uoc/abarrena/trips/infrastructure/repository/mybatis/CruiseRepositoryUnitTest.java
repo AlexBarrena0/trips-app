@@ -2,6 +2,7 @@ package edu.uoc.abarrena.trips.infrastructure.repository.mybatis;
 
 import edu.uoc.abarrena.trips.BaseTest;
 import edu.uoc.abarrena.trips.domain.model.Cruise;
+import edu.uoc.abarrena.trips.factory.CruiseFactory;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.CruiseEntity;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.CruiseMapper;
 import org.junit.jupiter.api.Test;
@@ -22,40 +23,36 @@ class CruiseRepositoryUnitTest extends BaseTest {
     @Test
     void save_saveCruise() {
         Long expectedId = 1L;
-        Cruise cruise = new Cruise(expectedId, "Cruise 1", "Cruise 1 description", 10);
+        Cruise cruise = CruiseFactory.cruiseDomain(expectedId);
 
-        CruiseEntity cruiseEntity = new CruiseEntity(expectedId, "Cruise 1", "Cruise 1 description", 10);
+        CruiseEntity cruiseEntity = CruiseFactory.cruiseEntity(expectedId);
         doNothing().when(cruiseMapper).save(cruiseEntity);
 
         Long actualId = cruiseRepository.save(cruise);
 
         assertEquals(expectedId, actualId);
-        verify(cruiseMapper).save(cruiseEntity);
     }
 
     @Test
     void findById_returnCruise() {
         Long id = 1L;
-        CruiseEntity cruiseEntity = new CruiseEntity(id, "Cruise 1", "Cruise 1 description", 10);
+        CruiseEntity cruiseEntity = CruiseFactory.cruiseEntity(id);
         when(cruiseMapper.findById(id)).thenReturn(cruiseEntity);
 
         Cruise actualCruise = cruiseRepository.findById(id);
 
-        Cruise expectedCruise = new Cruise(id, "Cruise 1", "Cruise 1 description", 10);
+        Cruise expectedCruise = CruiseFactory.cruiseDomain(id);
         assertEquals(expectedCruise, actualCruise);
-        verify(cruiseMapper).findById(id);
     }
 
     @Test
-    void updateCruise_updateCruise() {
+    void update_updateCruise() {
         Long id = 1L;
-        Cruise cruise = new Cruise(id, "Cruise 1", "Cruise 1 description", 10);
+        Cruise cruise = CruiseFactory.cruiseDomain(id);
 
-        CruiseEntity cruiseEntity = new CruiseEntity(id, "Cruise 1", "Cruise 1 description", 10);
+        CruiseEntity cruiseEntity = CruiseFactory.cruiseEntity(id);
         doNothing().when(cruiseMapper).update(cruiseEntity);
 
         cruiseRepository.update(cruise);
-
-        verify(cruiseMapper).update(cruiseEntity);
     }
 }

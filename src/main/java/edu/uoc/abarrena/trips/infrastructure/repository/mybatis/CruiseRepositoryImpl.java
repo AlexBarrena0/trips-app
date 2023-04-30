@@ -5,7 +5,9 @@ import edu.uoc.abarrena.trips.domain.model.Cruise;
 import edu.uoc.abarrena.trips.domain.repository.CruiseRepository;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.CruiseEntity;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.CruiseMapper;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class CruiseRepositoryImpl implements CruiseRepository {
 
     private final CruiseMapper cruiseMapper;
