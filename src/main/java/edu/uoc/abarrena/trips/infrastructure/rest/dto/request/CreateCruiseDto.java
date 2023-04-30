@@ -15,4 +15,6 @@ public class CreateCruiseDto {
     private String name;
     @NotBlank(message = "Cruise description is required")
     private String description;
+    @NotBlank(message = "Cruise capacity is required")
+    private int capacity;
 }

@@ -32,8 +32,8 @@ class CruiseControllerUnitTest extends BaseTest {
 
     @Test
     void createCruise_Success() throws Exception {
-        CreateCruiseDto createCruiseDto = new CreateCruiseDto("Cruise 1", "Cruise 1 description");
-        Cruise cruise = new Cruise(null, "Cruise 1", "Cruise 1 description");
+        CreateCruiseDto createCruiseDto = new CreateCruiseDto("Cruise 1", "Cruise 1 description", 10);
+        Cruise cruise = new Cruise(null, "Cruise 1", "Cruise 1 description", 10);
         Long expectedId = 1L;
         when(cruiseService.createCruise(cruise)).thenReturn(expectedId);
 
@@ -51,7 +51,7 @@ class CruiseControllerUnitTest extends BaseTest {
 
     @Test
     void findCruise_Success() throws Exception {
-        Cruise cruise = new Cruise(1L, "Cruise 1", "Cruise 1 description");
+        Cruise cruise = new Cruise(1L, "Cruise 1", "Cruise 1 description", 10);
         when(cruiseService.findCruiseById(1L)).thenReturn(cruise);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/cruises/1"))
@@ -80,8 +80,8 @@ class CruiseControllerUnitTest extends BaseTest {
 
     @Test
     void updateCruise_Success() throws Exception {
-        CreateCruiseDto createCruiseDto = new CreateCruiseDto("Cruise 1", "Cruise 1 description");
-        Cruise cruise = new Cruise(1L, "Cruise 1", "Cruise 1 description");
+        CreateCruiseDto createCruiseDto = new CreateCruiseDto("Cruise 1", "Cruise 1 description", 10);
+        Cruise cruise = new Cruise(1L, "Cruise 1", "Cruise 1 description", 10);
         when(cruiseService.findCruiseById(1L)).thenReturn(cruise);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.put("/cruises/1")

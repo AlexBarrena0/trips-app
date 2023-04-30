@@ -27,7 +27,7 @@ class CruiseTest {
 
     @Test
     public void createCruise_Success() {
-        CreateCruiseDto createCruiseDto = new CreateCruiseDto("Cruise 1", "Cruise 1 description");
+        CreateCruiseDto createCruiseDto = new CreateCruiseDto("Cruise 1", "Cruise 1 description", 10);
 
         ResponseEntity<Result> response = restTemplate.postForEntity("/cruises", createCruiseDto, Result.class);
         Result<Long> result = response.getBody();

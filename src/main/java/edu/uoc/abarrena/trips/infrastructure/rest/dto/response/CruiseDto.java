@@ -12,6 +12,7 @@ public class CruiseDto {
     private Long id;
     private String name;
     private String description;
+    private int capacity;
     private float avgShipRating;
     private float avgRoomRating;
     private float avgCrewRating;

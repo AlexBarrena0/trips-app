@@ -23,7 +23,7 @@ class CruiseServiceUnitTest extends BaseTest {
 
     @Test
     void createCruise_Success() {
-        Cruise cruise = new Cruise(null, "Cruise 1", "Cruise 1 description");
+        Cruise cruise = new Cruise(null, "Cruise 1", "Cruise 1 description", 10);
         Long expectedId = 1L;
         when(cruiseRepository.save(cruise)).thenReturn(expectedId);
         Long id = cruiseService.createCruise(cruise);
@@ -33,7 +33,7 @@ class CruiseServiceUnitTest extends BaseTest {
     @Test
     void findCruiseById_Success() {
         Long id = 1L;
-        Cruise expectedCruise = new Cruise(id, "Cruise 1", "Cruise 1 description");
+        Cruise expectedCruise = new Cruise(id, "Cruise 1", "Cruise 1 description",10);
         when(cruiseRepository.findById(id)).thenReturn(expectedCruise);
         Cruise actualCruise = cruiseService.findCruiseById(id);
         assertEquals(expectedCruise, actualCruise);
@@ -49,7 +49,7 @@ class CruiseServiceUnitTest extends BaseTest {
     @Test
     void updateCruise_Success() {
         Long id = 1L;
-        Cruise cruise = new Cruise(id, "Cruise 1", "Cruise 1 description");
+        Cruise cruise = new Cruise(id, "Cruise 1", "Cruise 1 description", 10);
         doNothing().when(cruiseRepository).update(cruise);
         cruiseService.updateCruise(cruise);
     }

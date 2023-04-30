@@ -22,9 +22,9 @@ class CruiseRepositoryUnitTest extends BaseTest {
     @Test
     void save_saveCruise() {
         Long expectedId = 1L;
-        Cruise cruise = new Cruise(expectedId, "Cruise 1", "Cruise 1 description");
+        Cruise cruise = new Cruise(expectedId, "Cruise 1", "Cruise 1 description", 10);
 
-        CruiseEntity cruiseEntity = new CruiseEntity(expectedId, "Cruise 1", "Cruise 1 description");
+        CruiseEntity cruiseEntity = new CruiseEntity(expectedId, "Cruise 1", "Cruise 1 description", 10);
         doNothing().when(cruiseMapper).save(cruiseEntity);
 
         Long actualId = cruiseRepository.save(cruise);
@@ -36,12 +36,12 @@ class CruiseRepositoryUnitTest extends BaseTest {
     @Test
     void findById_returnCruise() {
         Long id = 1L;
-        CruiseEntity cruiseEntity = new CruiseEntity(id, "Cruise 1", "Cruise 1 description");
+        CruiseEntity cruiseEntity = new CruiseEntity(id, "Cruise 1", "Cruise 1 description", 10);
         when(cruiseMapper.findById(id)).thenReturn(cruiseEntity);
 
         Cruise actualCruise = cruiseRepository.findById(id);
 
-        Cruise expectedCruise = new Cruise(id, "Cruise 1", "Cruise 1 description");
+        Cruise expectedCruise = new Cruise(id, "Cruise 1", "Cruise 1 description", 10);
         assertEquals(expectedCruise, actualCruise);
         verify(cruiseMapper).findById(id);
     }
@@ -49,9 +49,9 @@ class CruiseRepositoryUnitTest extends BaseTest {
     @Test
     void updateCruise_updateCruise() {
         Long id = 1L;
-        Cruise cruise = new Cruise(id, "Cruise 1", "Cruise 1 description");
+        Cruise cruise = new Cruise(id, "Cruise 1", "Cruise 1 description", 10);
 
-        CruiseEntity cruiseEntity = new CruiseEntity(id, "Cruise 1", "Cruise 1 description");
+        CruiseEntity cruiseEntity = new CruiseEntity(id, "Cruise 1", "Cruise 1 description", 10);
         doNothing().when(cruiseMapper).update(cruiseEntity);
 
         cruiseRepository.update(cruise);
