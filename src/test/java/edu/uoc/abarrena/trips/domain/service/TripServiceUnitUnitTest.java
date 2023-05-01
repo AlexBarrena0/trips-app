@@ -74,6 +74,16 @@ class TripServiceUnitUnitTest extends BaseUnitTest {
     }
 
     @Test
+    void createTrip_OverlappingTrip() {
+        Trip trip = TripFactory.tripDomain(null);
+        when(destinationService.findDestinationById(trip.getDestination().getId())).thenReturn(trip.getDestination());
+        when(cruiseService.findCruiseById(trip.getCruise().getId())).thenReturn(trip.getCruise());
+        when(tripRepository.search(Map.of("cruiseId", trip.getCruise().getId(), "startDate", trip.getStartDate(), "endDate", trip.getEndDate()))).thenReturn(List.of(trip));
+
+        assertThrows(InconsistentDatesException.class, () -> tripService.createTrip(trip));
+    }
+
+    @Test
     void findTripById_Success() {
         Trip trip = TripFactory.tripDomain(1L);
         when(tripRepository.findById(trip.getId())).thenReturn(trip);

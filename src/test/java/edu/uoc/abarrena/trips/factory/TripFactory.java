@@ -74,8 +74,8 @@ public interface TripFactory {
     public static CreateTripDto createTripDto() {
         return new CreateTripDto(
                 "Route 1",
-                LocalDate.of(2023, 1, 1),
-                LocalDate.of(2023, 1, 10),
+                LocalDate.of(2023, 2, 1),
+                LocalDate.of(2023, 2, 10),
                 10,
                 1000.0,
                 1L,
@@ -122,6 +122,17 @@ public interface TripFactory {
                 10,
                 1000.0,
                 2L,
+                1L);
+    }
+
+    public static CreateTripDto createTripDtoWithOverlappingTrip() {
+        return new CreateTripDto(
+                "Route 1",
+                LocalDate.of(2023, 1, 1),
+                LocalDate.of(2023, 1, 10),
+                10,
+                1000.0,
+                1L,
                 1L);
     }
 }

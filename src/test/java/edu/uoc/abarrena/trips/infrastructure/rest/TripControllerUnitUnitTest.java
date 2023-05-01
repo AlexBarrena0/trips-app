@@ -7,6 +7,7 @@ import edu.uoc.abarrena.trips.BaseUnitTest;
 import edu.uoc.abarrena.trips.application.TripService;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.exceptions.InconsistentDatesException;
+import edu.uoc.abarrena.trips.domain.exceptions.OverlappingTripException;
 import edu.uoc.abarrena.trips.domain.model.Trip;
 import edu.uoc.abarrena.trips.factory.TripFactory;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateTripDto;
@@ -111,6 +112,24 @@ class TripControllerUnitUnitTest extends BaseUnitTest {
 
         assertEquals(false, result.getSuccess());
         assertEquals("The start date must be before the end date", result.getMessage());
+    }
+
+    @Test
+    void createCruise_OverlappingTrip() throws Exception {
+        CreateTripDto createTripDto = TripFactory.createTripDto();
+        Trip trip = TripFactory.tripCreationDomain(null);
+        when(tripService.createTrip(trip)).thenThrow(new OverlappingTripException());
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/trips")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(createTripDto)))
+                        .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                        .andReturn();
+        String responseJson = mvcResult.getResponse().getContentAsString();
+        Result<Long> result = objectMapper.readValue(responseJson, new TypeReference<Result<Long>>() {});
+
+        assertEquals(false, result.getSuccess());
+        assertEquals("The trip dates overlaps with another cruise' trip", result.getMessage());
     }
 
     @Test

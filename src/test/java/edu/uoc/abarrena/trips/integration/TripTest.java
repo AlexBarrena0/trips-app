@@ -62,6 +62,16 @@ class TripTest extends BaseIntegrationTest {
     }
 
     @Test
+    void createTrip_OverlappingTrip() {
+        CreateTripDto createTripDto = TripFactory.createTripDtoWithOverlappingTrip();
+        ResponseEntity<Result> response = restTemplate.postForEntity("/trips", createTripDto, Result.class);
+        Result<Long> result = response.getBody();
+
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertEquals("The trip dates overlaps with another cruise' trip", result.getMessage());
+    }
+
+    @Test
     void findTripById_Success() {
         ResponseEntity<Result> response = restTemplate.getForEntity("/trips/1", Result.class);
         Result<TripDto> result = objectMapper.convertValue(response.getBody(), new TypeReference<Result<TripDto>>() {});
