@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.trips.domain.service;
 
-import edu.uoc.abarrena.trips.BaseTest;
+import edu.uoc.abarrena.trips.BaseUnitTest;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.model.Cruise;
 import edu.uoc.abarrena.trips.domain.repository.CruiseRepository;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
-class CruiseServiceUnitTest extends BaseTest {
+class CruiseServiceUnitUnitTest extends BaseUnitTest {
 
     @Mock
     private CruiseRepository cruiseRepository;

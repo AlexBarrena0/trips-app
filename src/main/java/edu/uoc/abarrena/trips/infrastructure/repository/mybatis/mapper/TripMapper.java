@@ -10,15 +10,27 @@ import java.util.Map;
 @Mapper
 public interface TripMapper {
 
-    @Insert("INSERT INTO TRIP (ID, ROUTE, START_DATE, END_DATE, N_DIVES, PRICE, CRUISE_ID, DESTINATION_ID) VALUES (#{id}, #{route}, #{startDate}, #{endDate}, #{nDives}, #{price}, #{cruise.id}, #{destination.id})")
+    @Insert("INSERT INTO TRIP (ROUTE, START_DATE, END_DATE, N_DIVES, PRICE, CRUISE_ID, DESTINATION_ID) VALUES (#{route}, #{startDate}, #{endDate}, #{nDives}, #{price}, #{cruise.id}, #{destination.id})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     public void save(TripEntity tripEntity);
 
-    @Select("SELECT * FROM TRIP WHERE ID = #{id} " +
-            "JOIN CRUISE ON TRIP.CRUISE_ID = CRUISE.ID" +
-            "JOIN DESTINATION ON TRIP.DESTINATION_ID = DESTINATION.ID")
+    @Results(id = "tripResult", value = {
+            @Result(property = "id", column = "id"),
+            @Result(property = "route", column = "route"),
+            @Result(property = "startDate", column = "start_date"),
+            @Result(property = "endDate", column = "end_date"),
+            @Result(property = "nDives", column = "n_dives"),
+            @Result(property = "price", column = "price"),
+            @Result(property = "cruise.id", column = "cruise_id"),
+            @Result(property = "destination.id", column = "destination_id")
+    })
+    @Select("SELECT * FROM TRIP " +
+            "JOIN CRUISE ON TRIP.CRUISE_ID = CRUISE.ID " +
+            "JOIN DESTINATION ON TRIP.DESTINATION_ID = DESTINATION.ID " +
+            "WHERE TRIP.ID = #{id}")
     public TripEntity findById(Long id);
 
+    @ResultMap("tripResult")
     @SelectProvider(type = TripEntitySqlProvider.class, method = "search")
     public List<TripEntity> search(Map<String, Object> params);
 

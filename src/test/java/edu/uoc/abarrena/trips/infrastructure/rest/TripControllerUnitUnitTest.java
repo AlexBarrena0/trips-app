@@ -3,7 +3,7 @@ package edu.uoc.abarrena.trips.infrastructure.rest;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import edu.uoc.abarrena.trips.BaseTest;
+import edu.uoc.abarrena.trips.BaseUnitTest;
 import edu.uoc.abarrena.trips.application.TripService;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.exceptions.InconsistentDatesException;
@@ -30,7 +30,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(TripController.class)
-class TripControllerUnitTest extends BaseTest {
+class TripControllerUnitUnitTest extends BaseUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -126,6 +126,20 @@ class TripControllerUnitTest extends BaseTest {
 
         assertEquals(true, result.getSuccess());
         assertEquals(result.getResponse(), trip);
+    }
+
+    @Test
+    void findTripById_TripNotFound() throws Exception {
+        when(tripService.findTripById(1L)).thenThrow(new EntityNotFoundException("Trip not found"));
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/trips/1"))
+                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andReturn();
+        String responseJson = mvcResult.getResponse().getContentAsString();
+        Result<Trip> result = objectMapper.readValue(responseJson, new TypeReference<Result<Trip>>() {});
+
+        assertEquals(false, result.getSuccess());
+        assertEquals("Trip not found", result.getMessage());
     }
 
     @Test

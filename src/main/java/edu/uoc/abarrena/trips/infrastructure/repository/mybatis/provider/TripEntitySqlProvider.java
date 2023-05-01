@@ -9,9 +9,9 @@ public class TripEntitySqlProvider {
     public String search(Map<String, Object> params) {
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT * FROM TRIP " +
-                " JOIN CRUISE ON TRIP.CRUISE_ID = CRUISE.ID" +
-                " JOIN DESTINATION ON TRIP.DESTINATION_ID = DESTINATION.ID" +
-                " WHERE 1=1 ");
+                "JOIN CRUISE ON TRIP.CRUISE_ID = CRUISE.ID " +
+                "JOIN DESTINATION ON TRIP.DESTINATION_ID = DESTINATION.ID " +
+                "WHERE 1=1 ");
 
         if (params.get("cruiseId") != null) {
             sql.append("AND TRIP.CRUISE_ID = #{cruiseId} ");

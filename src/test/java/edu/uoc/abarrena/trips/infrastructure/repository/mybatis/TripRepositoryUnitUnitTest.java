@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.trips.infrastructure.repository.mybatis;
 
-import edu.uoc.abarrena.trips.BaseTest;
+import edu.uoc.abarrena.trips.BaseUnitTest;
 import edu.uoc.abarrena.trips.domain.model.Trip;
 import edu.uoc.abarrena.trips.factory.TripFactory;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.TripEntity;
@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class TripRepositoryUnitTest extends BaseTest {
+class TripRepositoryUnitUnitTest extends BaseUnitTest {
 
     @Mock
     private TripMapper tripMapper;

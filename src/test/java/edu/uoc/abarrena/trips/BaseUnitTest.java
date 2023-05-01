@@ -7,7 +7,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BaseTest {
+public abstract class BaseUnitTest {
     private AutoCloseable closeable;
 
     @BeforeEach

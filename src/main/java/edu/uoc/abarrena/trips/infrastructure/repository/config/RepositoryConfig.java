@@ -35,12 +35,10 @@ public class RepositoryConfig {
     public DestinationRepository destinationRepository(DestinationMapper destinationMapper) {
         return new DestinationRepositoryImpl(destinationMapper);
     }
-
     @Bean
     public CruiseRepository cruiseRepository(CruiseMapper cruiseMapper) {
         return new CruiseRepositoryImpl(cruiseMapper);
     }
-
     @Bean
     public TripRepository tripRepository(TripMapper tripMapper) {
         return new TripRepositoryImpl(tripMapper);

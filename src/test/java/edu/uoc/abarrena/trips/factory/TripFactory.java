@@ -102,4 +102,26 @@ public interface TripFactory {
                 10,
                 1000.0);
     }
+
+    public static CreateTripDto createTripDtoWithNonExistingDestination() {
+        return new CreateTripDto(
+                "Route 1",
+                LocalDate.of(2023, 1, 1),
+                LocalDate.of(2023, 1, 10),
+                10,
+                1000.0,
+                1L,
+                3L);
+    }
+
+    public static CreateTripDto createTripDtoWithNonExistingCruise() {
+        return new CreateTripDto(
+                "Route 1",
+                LocalDate.of(2023, 1, 1),
+                LocalDate.of(2023, 1, 10),
+                10,
+                1000.0,
+                2L,
+                1L);
+    }
 }

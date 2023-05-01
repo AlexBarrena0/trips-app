@@ -2,31 +2,20 @@ package edu.uoc.abarrena.trips.integration;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.uoc.abarrena.trips.BaseIntegrationTest;
 import edu.uoc.abarrena.trips.factory.DestinationFactory;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateDestinationDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.DestinationDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.Result;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class DestinationTest {
-
-    @Autowired
-    private TestRestTemplate restTemplate;
+class DestinationTest extends BaseIntegrationTest {
 
     @Test
     public void createDestination_Success() {

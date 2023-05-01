@@ -2,7 +2,7 @@ package edu.uoc.abarrena.trips.infrastructure.rest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.uoc.abarrena.trips.BaseTest;
+import edu.uoc.abarrena.trips.BaseUnitTest;
 import edu.uoc.abarrena.trips.application.CruiseService;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.model.Cruise;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(CruiseController.class)
-class CruiseControllerUnitTest extends BaseTest {
+class CruiseControllerUnitUnitTest extends BaseUnitTest {
 
     @Autowired
     private MockMvc mockMvc;

@@ -2,7 +2,7 @@ package edu.uoc.abarrena.trips.infrastructure.rest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.uoc.abarrena.trips.BaseTest;
+import edu.uoc.abarrena.trips.BaseUnitTest;
 import edu.uoc.abarrena.trips.application.DestinationService;
 import edu.uoc.abarrena.trips.domain.exceptions.DestinationDuplicatedException;
 import edu.uoc.abarrena.trips.domain.model.Destination;
@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(DestinationController.class)
-class DestinationControllerUnitTest extends BaseTest {
+class DestinationControllerUnitUnitTest extends BaseUnitTest {
 
     @Autowired
     private MockMvc mockMvc;

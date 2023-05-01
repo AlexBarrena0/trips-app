@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.trips.infrastructure.repository.mybatis;
 
-import edu.uoc.abarrena.trips.BaseTest;
+import edu.uoc.abarrena.trips.BaseUnitTest;
 import edu.uoc.abarrena.trips.domain.model.Cruise;
 import edu.uoc.abarrena.trips.factory.CruiseFactory;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.CruiseEntity;
@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class CruiseRepositoryUnitTest extends BaseTest {
+class CruiseRepositoryUnitUnitTest extends BaseUnitTest {
 
     @Mock
     private CruiseMapper cruiseMapper;

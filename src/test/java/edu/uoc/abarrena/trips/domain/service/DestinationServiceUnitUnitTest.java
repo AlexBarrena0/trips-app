@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.trips.domain.service;
 
-import edu.uoc.abarrena.trips.BaseTest;
+import edu.uoc.abarrena.trips.BaseUnitTest;
 import edu.uoc.abarrena.trips.domain.exceptions.DestinationDuplicatedException;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.model.Destination;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-class DestinationServiceUnitTest extends BaseTest {
+class DestinationServiceUnitUnitTest extends BaseUnitTest {
 
     @Mock
     private DestinationRepository destinationRepository;
