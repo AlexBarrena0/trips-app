@@ -13,6 +13,7 @@ import edu.uoc.abarrena.trips.domain.repository.TripRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -75,7 +76,10 @@ public class TripServiceImpl implements TripService {
         if (destination == null) {
             throw new EntityNotFoundException("Destination not found");
         }
-        Map<String, Object> params = Map.of("destinationId", id, "startDate", startDate, "endDate", endDate);
+        Map<String, Object> params = new HashMap<>();
+        params.put("destinationId", id);
+        params.put("startDate", startDate);
+        params.put("endDate", endDate);
         return tripRepository.search(params);
     }
 
