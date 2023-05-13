@@ -48,4 +48,10 @@ public interface TripService {
      * @param trip the trip to update
      */
     public void updateTrip(Trip trip);
+
+    /**
+     * Books a place in the selected trip
+     * @param tripId the id of the trip to book the place
+     */
+    public void bookPlace(Long tripId);
 }

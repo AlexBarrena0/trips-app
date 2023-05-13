@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class DestinationRepositoryUnitUnitTest extends BaseUnitTest {
+class DestinationRepositoryUnitTest extends BaseUnitTest {
 
     @Mock
     private DestinationMapper destinationMapper;

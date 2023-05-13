@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(DestinationController.class)
-class DestinationControllerUnitUnitTest extends BaseUnitTest {
+class DestinationControllerUnitTest extends BaseUnitTest {
 
     @Autowired
     private MockMvc mockMvc;

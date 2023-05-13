@@ -20,7 +20,8 @@ public interface TripFactory {
                 10,
                 1000.0,
                 CruiseFactory.cruiseDomain(1L),
-                DestinationFactory.destinationDomain(1L));
+                DestinationFactory.destinationDomain(1L),
+                10);
     }
 
     public static Trip tripCreationDomain(Long expectedId) {
@@ -32,7 +33,21 @@ public interface TripFactory {
                 10,
                 1000.0,
                 new Cruise(1L),
-                new Destination(1L));
+                new Destination(1L),
+                10);
+    }
+
+    public static Trip tripCreationDomainWithoutAvailablePlaces(Long expectedId) {
+        return new Trip(
+                expectedId,
+                "Route 1",
+                LocalDate.of(2023, 1, 1),
+                LocalDate.of(2023, 1, 10),
+                10,
+                1000.0,
+                new Cruise(1L),
+                new Destination(1L),
+                null);
     }
 
     public static Trip tripUpdateDomain(Long expectedId) {
@@ -44,7 +59,8 @@ public interface TripFactory {
                 10,
                 1000.0,
                 null,
-                null);
+                null,
+                10);
     }
 
     public static TripEntity tripEntity(Long expectedId) {
@@ -56,7 +72,8 @@ public interface TripFactory {
                 10,
                 1000.0,
                 CruiseFactory.cruiseEntity(1L),
-                DestinationFactory.destinationEntity(1L));
+                DestinationFactory.destinationEntity(1L),
+                10);
     }
 
     public static Trip tripDomainWithInconsistentDates(Long expectedId) {
@@ -68,10 +85,22 @@ public interface TripFactory {
                 10,
                 1000.0,
                 new Cruise(1L),
-                new Destination(1L));
+                new Destination(1L),
+                null);
     }
 
     public static CreateTripDto createTripDto() {
+        return new CreateTripDto(
+                "Route 1",
+                LocalDate.of(2023, 1, 1),
+                LocalDate.of(2023, 1, 10),
+                10,
+                1000.0,
+                1L,
+                1L);
+    }
+
+    public static CreateTripDto createTripDtoIntegration() {
         return new CreateTripDto(
                 "Route 1",
                 LocalDate.of(2023, 2, 1),

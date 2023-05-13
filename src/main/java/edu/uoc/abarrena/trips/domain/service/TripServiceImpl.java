@@ -5,6 +5,7 @@ import edu.uoc.abarrena.trips.application.DestinationService;
 import edu.uoc.abarrena.trips.application.TripService;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.exceptions.InconsistentDatesException;
+import edu.uoc.abarrena.trips.domain.exceptions.NoAvailablePlacesException;
 import edu.uoc.abarrena.trips.domain.exceptions.OverlappingTripException;
 import edu.uoc.abarrena.trips.domain.model.Cruise;
 import edu.uoc.abarrena.trips.domain.model.Destination;
@@ -48,6 +49,7 @@ public class TripServiceImpl implements TripService {
         if (isTripOverlapping(trip)) {
             throw new OverlappingTripException();
         }
+        trip.setAvailablePlaces(cruise.getCapacity());
         return tripRepository.save(trip);
     }
 
@@ -86,6 +88,16 @@ public class TripServiceImpl implements TripService {
     @Override
     public void updateTrip(Trip trip) {
         tripRepository.update(trip);
+    }
+
+    @Override
+    public void bookPlace(Long tripId) {
+        Trip trip = findTripById(tripId);
+        if (trip.getAvailablePlaces() == 0) {
+            throw new NoAvailablePlacesException();
+        }
+        trip.setAvailablePlaces(trip.getAvailablePlaces() - 1);
+        updateTrip(trip);
     }
 
     private boolean isTripOverlapping(Trip trip) {

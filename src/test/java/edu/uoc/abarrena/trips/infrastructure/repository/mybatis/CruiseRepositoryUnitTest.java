@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class CruiseRepositoryUnitUnitTest extends BaseUnitTest {
+class CruiseRepositoryUnitTest extends BaseUnitTest {
 
     @Mock
     private CruiseMapper cruiseMapper;

@@ -17,6 +17,7 @@ public class TripEntity {
     private LocalDate endDate;
     private Integer nDives;
     private Double price;
+    private Integer availablePlaces;
     private CruiseEntity cruise;
     private DestinationEntity destination;
 }

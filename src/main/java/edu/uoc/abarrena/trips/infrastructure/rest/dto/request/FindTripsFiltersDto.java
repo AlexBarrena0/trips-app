@@ -10,7 +10,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FindTripsFiltersDto {
-
     private Long cruiseId;
     private Long destinationId;
     private LocalDate startDate;

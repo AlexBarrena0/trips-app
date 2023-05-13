@@ -5,6 +5,7 @@ import edu.uoc.abarrena.trips.application.CruiseService;
 import edu.uoc.abarrena.trips.application.DestinationService;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.exceptions.InconsistentDatesException;
+import edu.uoc.abarrena.trips.domain.exceptions.OverlappingTripException;
 import edu.uoc.abarrena.trips.domain.model.Trip;
 import edu.uoc.abarrena.trips.domain.repository.TripRepository;
 import edu.uoc.abarrena.trips.factory.TripFactory;
@@ -20,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
-class TripServiceUnitUnitTest extends BaseUnitTest {
+class TripServiceUnitTest extends BaseUnitTest {
 
     @Mock
     private DestinationService destinationService;
@@ -80,7 +81,7 @@ class TripServiceUnitUnitTest extends BaseUnitTest {
         when(cruiseService.findCruiseById(trip.getCruise().getId())).thenReturn(trip.getCruise());
         when(tripRepository.search(Map.of("cruiseId", trip.getCruise().getId(), "startDate", trip.getStartDate(), "endDate", trip.getEndDate()))).thenReturn(List.of(trip));
 
-        assertThrows(InconsistentDatesException.class, () -> tripService.createTrip(trip));
+        assertThrows(OverlappingTripException.class, () -> tripService.createTrip(trip));
     }
 
     @Test

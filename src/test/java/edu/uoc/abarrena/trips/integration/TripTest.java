@@ -23,7 +23,7 @@ class TripTest extends BaseIntegrationTest {
 
     @Test
     void createTrip_Success() {
-        CreateTripDto createTripDto = TripFactory.createTripDto();
+        CreateTripDto createTripDto = TripFactory.createTripDtoIntegration();
         ResponseEntity<Result> response = restTemplate.postForEntity("/trips", createTripDto, Result.class);
         Result<Long> result = response.getBody();
 
@@ -80,6 +80,7 @@ class TripTest extends BaseIntegrationTest {
         assertEquals(1L, result.getResponse().getId());
         assertEquals("Route 1", result.getResponse().getRoute());
         assertEquals(1L, result.getResponse().getCruise().getId());
+        assertEquals(result.getResponse().getAvailablePlaces(), result.getResponse().getCruise().getCapacity());
     }
 
     @Test

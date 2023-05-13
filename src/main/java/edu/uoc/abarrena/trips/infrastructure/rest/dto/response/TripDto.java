@@ -16,6 +16,7 @@ public class TripDto {
     private LocalDate endDate;
     private Integer nDives;
     private Double price;
+    private Integer availablePlaces;
     private CruiseDto cruise;
     private DestinationDto destination;
 }

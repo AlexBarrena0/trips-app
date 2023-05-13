@@ -31,7 +31,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(TripController.class)
-class TripControllerUnitUnitTest extends BaseUnitTest {
+class TripControllerUnitTest extends BaseUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -39,12 +39,12 @@ class TripControllerUnitUnitTest extends BaseUnitTest {
     @MockBean
     private TripService tripService;
 
-    private ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+    private final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
     @Test
     void createTrip_Success() throws Exception {
         CreateTripDto createTripDto = TripFactory.createTripDto();
-        Trip trip = TripFactory.tripCreationDomain(null);
+        Trip trip = TripFactory.tripCreationDomainWithoutAvailablePlaces(null);
         Long expectedId = 1L;
         when(tripService.createTrip(trip)).thenReturn(expectedId);
 
@@ -63,7 +63,7 @@ class TripControllerUnitUnitTest extends BaseUnitTest {
     @Test
     void createTrip_NonExistingDestination() throws Exception {
         CreateTripDto createTripDto = TripFactory.createTripDto();
-        Trip trip = TripFactory.tripCreationDomain(null);
+        Trip trip = TripFactory.tripCreationDomainWithoutAvailablePlaces(null);
         when(tripService.createTrip(trip)).thenThrow(new EntityNotFoundException("Destination not found"));
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/trips")
@@ -81,7 +81,7 @@ class TripControllerUnitUnitTest extends BaseUnitTest {
     @Test
     void createTrip_NonExistingCruise() throws Exception {
         CreateTripDto createTripDto = TripFactory.createTripDto();
-        Trip trip = TripFactory.tripCreationDomain(null);
+        Trip trip = TripFactory.tripCreationDomainWithoutAvailablePlaces(null);
         when(tripService.createTrip(trip)).thenThrow(new EntityNotFoundException("Cruise not found"));
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/trips")
@@ -117,7 +117,7 @@ class TripControllerUnitUnitTest extends BaseUnitTest {
     @Test
     void createCruise_OverlappingTrip() throws Exception {
         CreateTripDto createTripDto = TripFactory.createTripDto();
-        Trip trip = TripFactory.tripCreationDomain(null);
+        Trip trip = TripFactory.tripCreationDomainWithoutAvailablePlaces(null);
         when(tripService.createTrip(trip)).thenThrow(new OverlappingTripException());
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/trips")

@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.trips.infrastructure.repository.mybatis.provider;
 
-import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.TripEntity;
+import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.*;
 
 import java.util.Map;
 

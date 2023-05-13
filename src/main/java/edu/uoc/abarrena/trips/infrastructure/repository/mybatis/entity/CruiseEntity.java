@@ -1,26 +1,24 @@
 package edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class CruiseEntity {
 
     private Long id;
     private String name;
     private String description;
-    private int capacity;
-    private float avgShipRating;
-    private float avgRoomRating;
-    private float avgCrewRating;
-    private float avgFoodRating;
+    private Integer capacity;
+    private Double avgShipRating;
+    private Double avgRoomRating;
+    private Double avgCrewRating;
+    private Double avgFoodRating;
 
-    public CruiseEntity(Long id, String name, String description, int capacity) {
+    public CruiseEntity(Long id, String name, String description, Integer capacity) {
         this.id = id;
         this.name = name;
         this.description = description;

@@ -17,6 +17,11 @@ public class Trip {
     private LocalDate endDate;
     private Integer nDives;
     private Double price;
+    private Integer availablePlaces;
     private Cruise cruise;
     private Destination destination;
+
+    public Trip(Long id) {
+        this.id = id;
+    }
 }

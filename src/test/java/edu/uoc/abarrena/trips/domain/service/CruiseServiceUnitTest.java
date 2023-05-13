@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
-class CruiseServiceUnitUnitTest extends BaseUnitTest {
+class CruiseServiceUnitTest extends BaseUnitTest {
 
     @Mock
     private CruiseRepository cruiseRepository;
