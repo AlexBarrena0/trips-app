@@ -2,7 +2,7 @@ package edu.uoc.abarrena.trips.infrastructure.rest;
 
 import edu.uoc.abarrena.trips.application.BookingService;
 import edu.uoc.abarrena.trips.application.converter.BookingConverter;
-import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.BookingDto;
+import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateBookingDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.UpdateBookingDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.Result;
 import lombok.extern.log4j.Log4j2;
@@ -22,10 +22,10 @@ public class BookingController {
     }
 
     @PostMapping
-    public Result<Long> bookTrip(@RequestBody BookingDto bookingDto) {
-        log.trace("Creating booking " + bookingDto);
+    public Result<Long> bookTrip(@RequestBody CreateBookingDto createBookingDto) {
+        log.trace("Creating booking " + createBookingDto);
 
-        Long bookingId = bookingService.bookTrip(BookingConverter.INSTANCE.toDomain(bookingDto));
+        Long bookingId = bookingService.bookTrip(BookingConverter.INSTANCE.toDomain(createBookingDto));
 
         return new Result<>(bookingId, "Booking created successfully");
     }

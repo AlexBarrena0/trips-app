@@ -10,8 +10,9 @@ public interface RatingService {
      * Creates a new rating
      * @param rating the rating to create
      * @return the id of the created rating
+     * @throws EntityNotFoundException if the cruise does not exist
      */
-    public Long createRating(Rating rating);
+    public Long createRating(Rating rating) throws EntityNotFoundException;
 
     /**
      * Find a rating by its cruise

@@ -48,4 +48,13 @@ public class CruiseController {
 
         return new Result(null, "Cruise updated successfully");
     }
+
+    @DeleteMapping("/{id}")
+    public Result deleteCruise(@PathVariable Long id) {
+        log.trace("Deleting cruise " + id);
+
+        cruiseService.deleteCruise(id);
+
+        return new Result(null, "Cruise deleted successfully");
+    }
 }

@@ -19,9 +19,9 @@ public interface TripFactory {
                 LocalDate.of(2023, 1, 10),
                 10,
                 1000.0,
+                10,
                 CruiseFactory.cruiseDomain(1L),
-                DestinationFactory.destinationDomain(1L),
-                10);
+                DestinationFactory.destinationDomain(1L));
     }
 
     public static Trip tripCreationDomain(Long expectedId) {
@@ -32,9 +32,9 @@ public interface TripFactory {
                 LocalDate.of(2023, 1, 10),
                 10,
                 1000.0,
+                10,
                 new Cruise(1L),
-                new Destination(1L),
-                10);
+                new Destination(1L));
     }
 
     public static Trip tripCreationDomainWithoutAvailablePlaces(Long expectedId) {
@@ -45,9 +45,9 @@ public interface TripFactory {
                 LocalDate.of(2023, 1, 10),
                 10,
                 1000.0,
+                null,
                 new Cruise(1L),
-                new Destination(1L),
-                null);
+                new Destination(1L));
     }
 
     public static Trip tripUpdateDomain(Long expectedId) {
@@ -58,9 +58,9 @@ public interface TripFactory {
                 LocalDate.of(2023, 1, 10),
                 10,
                 1000.0,
+                10,
                 null,
-                null,
-                10);
+                null);
     }
 
     public static TripEntity tripEntity(Long expectedId) {
@@ -71,9 +71,9 @@ public interface TripFactory {
                 LocalDate.of(2023, 1, 10),
                 10,
                 1000.0,
+                10,
                 CruiseFactory.cruiseEntity(1L),
-                DestinationFactory.destinationEntity(1L),
-                10);
+                DestinationFactory.destinationEntity(1L));
     }
 
     public static Trip tripDomainWithInconsistentDates(Long expectedId) {
@@ -84,9 +84,9 @@ public interface TripFactory {
                 LocalDate.of(2023, 1, 1),
                 10,
                 1000.0,
+                null,
                 new Cruise(1L),
-                new Destination(1L),
-                null);
+                new Destination(1L));
     }
 
     public static CreateTripDto createTripDto() {

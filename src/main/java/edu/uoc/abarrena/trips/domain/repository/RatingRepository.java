@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.trips.domain.repository;
 
-import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.RatingEntity;
+import edu.uoc.abarrena.trips.domain.model.Rating;
 
 import java.util.List;
 
@@ -10,14 +10,14 @@ public interface RatingRepository {
      * @param ratingEntity to save
      * @return the id of the saved rating
      */
-    public Long save(RatingEntity ratingEntity);
+    public Long save(Rating rating);
 
     /**
      * Finds all the ratings of a cruise
      * @param id of the cruise to find
      * @return all the cruise's ratings
      */
-    public List<RatingEntity> findByCruiseId(Long id);
+    public List<Rating> findByCruiseId(Long id);
 
     /**
      * Deletes a rating

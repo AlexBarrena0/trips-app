@@ -23,4 +23,10 @@ public interface CruiseRepository {
      * @param cruise the cruise to update
      */
     public void update(Cruise cruise);
+
+    /**
+     * Delete a cruise
+     * @param id of the cruise to delete
+     */
+    public void delete(Long id);
 }

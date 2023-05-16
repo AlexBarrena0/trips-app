@@ -29,4 +29,10 @@ public interface CruiseService {
      */
     public void updateCruise(Cruise cruise);
 
+    /**
+     * Deletes a cruise
+     * @param id the id of the cruise to delete
+     */
+    public void deleteCruise(Long id);
+
 }

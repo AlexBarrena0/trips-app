@@ -2,7 +2,7 @@ package edu.uoc.abarrena.trips.application.converter;
 
 import edu.uoc.abarrena.trips.domain.model.Booking;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.BookingEntity;
-import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.BookingDto;
+import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateBookingDto;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.UpdateBookingDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -16,7 +16,7 @@ public interface BookingConverter {
     Booking toDomain(BookingEntity bookingEntity);
 
     @Mapping(target = "trip.id", source = "tripId")
-    Booking toDomain(BookingDto bookingDto);
+    Booking toDomain(CreateBookingDto createBookingDto);
 
     Booking toDomain(UpdateBookingDto updateBookingDto);
 

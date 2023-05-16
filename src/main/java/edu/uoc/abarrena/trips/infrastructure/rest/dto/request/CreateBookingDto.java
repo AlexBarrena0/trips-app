@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookingDto {
+public class CreateBookingDto {
 
     @NotBlank(message = "Trip id is required")
     Long tripId;

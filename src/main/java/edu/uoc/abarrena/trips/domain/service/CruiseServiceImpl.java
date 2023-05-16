@@ -33,4 +33,9 @@ public class CruiseServiceImpl implements CruiseService {
     public void updateCruise(Cruise cruise) {
         cruiseRepository.update(cruise);
     }
+
+    @Override
+    public void deleteCruise(Long id) {
+        cruiseRepository.delete(id);
+    }
 }
