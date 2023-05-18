@@ -33,4 +33,9 @@ public class CruiseRepositoryImpl implements CruiseRepository {
         CruiseEntity cruiseEntity = CruiseConverter.INSTANCE.toEntity(cruise);
         cruiseMapper.update(cruiseEntity);
     }
+
+    @Override
+    public void delete(Long id) {
+        cruiseMapper.delete(id);
+    }
 }
