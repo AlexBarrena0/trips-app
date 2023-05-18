@@ -1,17 +1,17 @@
 package edu.uoc.abarrena.trips.domain.config;
 
-import edu.uoc.abarrena.trips.application.CruiseService;
-import edu.uoc.abarrena.trips.application.DestinationService;
-import edu.uoc.abarrena.trips.application.RatingService;
-import edu.uoc.abarrena.trips.application.TripService;
+import edu.uoc.abarrena.trips.domain.service.CruiseService;
+import edu.uoc.abarrena.trips.domain.service.DestinationService;
+import edu.uoc.abarrena.trips.domain.service.RatingService;
+import edu.uoc.abarrena.trips.domain.service.TripService;
 import edu.uoc.abarrena.trips.domain.repository.CruiseRepository;
 import edu.uoc.abarrena.trips.domain.repository.DestinationRepository;
 import edu.uoc.abarrena.trips.domain.repository.RatingRepository;
 import edu.uoc.abarrena.trips.domain.repository.TripRepository;
-import edu.uoc.abarrena.trips.domain.service.CruiseServiceImpl;
-import edu.uoc.abarrena.trips.domain.service.DestinationServiceImpl;
-import edu.uoc.abarrena.trips.domain.service.RatingServiceImpl;
-import edu.uoc.abarrena.trips.domain.service.TripServiceImpl;
+import edu.uoc.abarrena.trips.domain.service.impl.CruiseServiceImpl;
+import edu.uoc.abarrena.trips.domain.service.impl.DestinationServiceImpl;
+import edu.uoc.abarrena.trips.domain.service.impl.RatingServiceImpl;
+import edu.uoc.abarrena.trips.domain.service.impl.TripServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

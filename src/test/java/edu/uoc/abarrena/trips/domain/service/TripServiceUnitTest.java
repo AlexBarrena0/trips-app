@@ -1,13 +1,12 @@
 package edu.uoc.abarrena.trips.domain.service;
 
 import edu.uoc.abarrena.trips.BaseUnitTest;
-import edu.uoc.abarrena.trips.application.CruiseService;
-import edu.uoc.abarrena.trips.application.DestinationService;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.exceptions.InconsistentDatesException;
 import edu.uoc.abarrena.trips.domain.exceptions.OverlappingTripException;
 import edu.uoc.abarrena.trips.domain.model.Trip;
 import edu.uoc.abarrena.trips.domain.repository.TripRepository;
+import edu.uoc.abarrena.trips.domain.service.impl.TripServiceImpl;
 import edu.uoc.abarrena.trips.factory.TripFactory;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

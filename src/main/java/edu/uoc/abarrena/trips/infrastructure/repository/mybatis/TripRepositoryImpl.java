@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.trips.infrastructure.repository.mybatis;
 
-import edu.uoc.abarrena.trips.application.converter.TripConverter;
+import edu.uoc.abarrena.trips.domain.converter.TripConverter;
 import edu.uoc.abarrena.trips.domain.model.Trip;
 import edu.uoc.abarrena.trips.domain.repository.TripRepository;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.TripEntity;

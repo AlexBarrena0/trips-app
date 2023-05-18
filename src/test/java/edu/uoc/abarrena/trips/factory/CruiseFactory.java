@@ -2,8 +2,8 @@ package edu.uoc.abarrena.trips.factory;
 
 import edu.uoc.abarrena.trips.domain.model.Cruise;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.CruiseEntity;
-import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateCruiseDto;
-import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.UpdateCruiseDto;
+import edu.uoc.abarrena.trips.application.dto.request.CreateCruiseDto;
+import edu.uoc.abarrena.trips.application.dto.request.UpdateCruiseDto;
 
 public interface CruiseFactory {
 

@@ -4,8 +4,8 @@ import edu.uoc.abarrena.trips.domain.model.Cruise;
 import edu.uoc.abarrena.trips.domain.model.Destination;
 import edu.uoc.abarrena.trips.domain.model.Trip;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.TripEntity;
-import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateTripDto;
-import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.UpdateTripDto;
+import edu.uoc.abarrena.trips.application.dto.request.CreateTripDto;
+import edu.uoc.abarrena.trips.application.dto.request.UpdateTripDto;
 
 import java.time.LocalDate;
 

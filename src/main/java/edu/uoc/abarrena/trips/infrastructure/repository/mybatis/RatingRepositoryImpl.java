@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.trips.infrastructure.repository.mybatis;
 
-import edu.uoc.abarrena.trips.application.converter.RatingConverter;
+import edu.uoc.abarrena.trips.domain.converter.RatingConverter;
 import edu.uoc.abarrena.trips.domain.model.Rating;
 import edu.uoc.abarrena.trips.domain.repository.RatingRepository;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.RatingEntity;

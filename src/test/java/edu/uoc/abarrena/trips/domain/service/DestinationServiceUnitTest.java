@@ -5,6 +5,7 @@ import edu.uoc.abarrena.trips.domain.exceptions.DestinationDuplicatedException;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.model.Destination;
 import edu.uoc.abarrena.trips.domain.repository.DestinationRepository;
+import edu.uoc.abarrena.trips.domain.service.impl.DestinationServiceImpl;
 import edu.uoc.abarrena.trips.factory.DestinationFactory;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

@@ -4,6 +4,7 @@ import edu.uoc.abarrena.trips.BaseUnitTest;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.model.Cruise;
 import edu.uoc.abarrena.trips.domain.repository.CruiseRepository;
+import edu.uoc.abarrena.trips.domain.service.impl.CruiseServiceImpl;
 import edu.uoc.abarrena.trips.factory.CruiseFactory;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

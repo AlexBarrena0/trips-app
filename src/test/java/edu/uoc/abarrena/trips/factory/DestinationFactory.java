@@ -2,7 +2,7 @@ package edu.uoc.abarrena.trips.factory;
 
 import edu.uoc.abarrena.trips.domain.model.Destination;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.DestinationEntity;
-import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateDestinationDto;
+import edu.uoc.abarrena.trips.application.dto.request.CreateDestinationDto;
 
 import java.util.Arrays;
 import java.util.List;
