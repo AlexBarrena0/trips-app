@@ -3,6 +3,7 @@ package edu.uoc.abarrena.trips.infrastructure.rest;
 import edu.uoc.abarrena.trips.application.RatingService;
 import edu.uoc.abarrena.trips.application.converter.RatingConverter;
 import edu.uoc.abarrena.trips.infrastructure.rest.dto.request.CreateRatingDto;
+import edu.uoc.abarrena.trips.infrastructure.rest.dto.response.Result;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,17 +21,21 @@ public class RatingController {
         }
 
         @PostMapping
-        public void rateCruise(@RequestBody CreateRatingDto ratingDto) {
+        public Result<Long> rateCruise(@RequestBody CreateRatingDto ratingDto) {
             log.trace("Rating cruise");
 
-            ratingService.createRating(RatingConverter.INSTANCE.toDomain(ratingDto));
+            Long id = ratingService.createRating(RatingConverter.INSTANCE.toDomain(ratingDto));
+
+            return new Result<>(id, "Rating created successfully");
         }
 
         @DeleteMapping("/{id}")
-        public void deleteRating(@PathVariable Long id) {
+        public Result<Boolean> deleteRating(@PathVariable Long id) {
             log.trace("Deleting rating");
 
             ratingService.deleteRating(id);
+
+            return new Result<>(true, "Rating deleted successfully");
         }
 
 }

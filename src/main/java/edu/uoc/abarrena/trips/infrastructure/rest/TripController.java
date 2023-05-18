@@ -56,11 +56,11 @@ public class TripController {
     }
 
     @PutMapping("/{id}")
-    public Result updateTrip(@PathVariable Long id, @Valid @RequestBody UpdateTripDto updateTripDto) {
+    public Result<Boolean> updateTrip(@PathVariable Long id, @Valid @RequestBody UpdateTripDto updateTripDto) {
         log.trace("Updating trip " + id + " with " + updateTripDto);
 
         tripService.updateTrip(TripConverter.INSTANCE.toDomain(updateTripDto));
 
-        return new Result(null, "Trip updated successfully");
+        return new Result<>(true, "Trip updated successfully");
     }
 }

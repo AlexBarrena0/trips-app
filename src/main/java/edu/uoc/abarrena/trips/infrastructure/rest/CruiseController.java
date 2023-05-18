@@ -41,20 +41,20 @@ public class CruiseController {
     }
 
     @PutMapping("/{id}")
-    public Result updateCruise(@PathVariable Long id, @RequestBody UpdateCruiseDto updateCruiseDto) {
+    public Result<Boolean> updateCruise(@PathVariable Long id, @RequestBody UpdateCruiseDto updateCruiseDto) {
         log.trace("Updating cruise " + id);
 
         cruiseService.updateCruise(CruiseConverter.INSTANCE.toDomain(updateCruiseDto));
 
-        return new Result(null, "Cruise updated successfully");
+        return new Result<>(true, "Cruise updated successfully");
     }
 
     @DeleteMapping("/{id}")
-    public Result deleteCruise(@PathVariable Long id) {
+    public Result<Boolean> deleteCruise(@PathVariable Long id) {
         log.trace("Deleting cruise " + id);
 
         cruiseService.deleteCruise(id);
 
-        return new Result(null, "Cruise deleted successfully");
+        return new Result<>(true, "Cruise deleted successfully");
     }
 }

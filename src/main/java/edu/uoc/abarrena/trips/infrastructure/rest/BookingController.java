@@ -31,9 +31,11 @@ public class BookingController {
     }
 
     @PatchMapping
-    public void updateBooking(@RequestBody UpdateBookingDto updateBookingDto) {
+    public Result<Boolean> updateBooking(@RequestBody UpdateBookingDto updateBookingDto) {
         log.trace("Updating booking " + updateBookingDto);
 
         bookingService.updateBookingStatus(BookingConverter.INSTANCE.toDomain(updateBookingDto));
+
+        return new Result<>(true, "Booking updated successfully");
     }
 }
