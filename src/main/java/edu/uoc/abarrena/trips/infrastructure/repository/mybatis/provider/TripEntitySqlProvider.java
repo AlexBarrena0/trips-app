@@ -49,7 +49,9 @@ public class TripEntitySqlProvider {
         if (tripEntity.getPrice() != null) {
             sql.append("PRICE = #{price}, ");
         }
-
+        if (tripEntity.getAvailablePlaces() != null) {
+            sql.append("AVAILABLE_PLACES = #{availablePlaces}, ");
+        }
         sql.delete(sql.length() - 2, sql.length());
         sql.append(" WHERE ID = #{id}");
         return sql.toString();

@@ -1,9 +1,9 @@
 package edu.uoc.abarrena.trips.domain.converter;
 
-import edu.uoc.abarrena.trips.domain.model.Booking;
-import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.BookingEntity;
 import edu.uoc.abarrena.trips.application.dto.request.CreateBookingDto;
 import edu.uoc.abarrena.trips.application.dto.request.UpdateBookingDto;
+import edu.uoc.abarrena.trips.domain.model.Booking;
+import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.BookingEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

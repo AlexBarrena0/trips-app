@@ -14,8 +14,7 @@ public interface BookingService {
 
     /**
      * Update booking status
-     * @param bookingId booking id
-     * @param status booking status
+     * @param booking the booking to update
      */
     public void updateBookingStatus(Booking booking);
 }

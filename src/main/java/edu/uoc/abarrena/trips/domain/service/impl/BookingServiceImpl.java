@@ -1,5 +1,6 @@
 package edu.uoc.abarrena.trips.domain.service.impl;
 
+import edu.uoc.abarrena.trips.domain.exceptions.UpdatedBookingException;
 import edu.uoc.abarrena.trips.domain.service.BookingService;
 import edu.uoc.abarrena.trips.domain.service.TripService;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
@@ -31,14 +32,19 @@ public class BookingServiceImpl implements BookingService {
         if (trip.getAvailablePlaces() == 0) {
             throw new NoAvailablePlacesException();
         }
+        booking.setStatus(BookingStatus.PENDING.name());
         return bookingRepository.save(booking);
     }
 
     @Override
     public void updateBookingStatus(Booking booking) {
+        Booking currentBooking = bookingRepository.findById(booking.getId());
+        if (!currentBooking.getStatus().equals(BookingStatus.PENDING.name())) {
+            throw new UpdatedBookingException();
+        }
         bookingRepository.update(booking);
-        if (booking.getStatus().equals(BookingStatus.CONFIRMED.name())) {
-            tripService.bookPlace(booking.getTrip().getId());
+        if (currentBooking.getStatus().equals(BookingStatus.CONFIRMED.name())) {
+            tripService.bookPlace(currentBooking.getTrip().getId());
         }
     }
 }
