@@ -26,7 +26,7 @@ public class CreateTripDto {
 
     @NotBlank(message = "Trip number of dives is required")
     @Min(value = 1, message = "Trip number of dives must be greater than 0")
-    private Integer nDives;
+    private Integer dives;
 
     @NotBlank(message = "Trip price is required")
     @Min(value = 0, message = "Trip price must be greater or equal than 0")

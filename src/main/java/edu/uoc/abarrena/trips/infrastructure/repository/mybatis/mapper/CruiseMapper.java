@@ -19,12 +19,9 @@ public interface CruiseMapper {
             @Result(property = "avgRoomRating", column = "avg_room_rating"),
             @Result(property = "avgCrewRating", column = "avg_crew_rating"),
             @Result(property = "avgFoodRating", column = "avg_food_rating"),
-            @Result(property = "companyId", column = "company_id"),
-            @Result(property = "ratings", column = "id", many = @Many(select = "edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.RatingMapper.findByCruiseId"))
+            @Result(property = "companyId", column = "company_id")
     })
-    @Select("SELECT * FROM CRUISE " +
-            "LEFT JOIN RATING ON RATING.CRUISE_ID = CRUISE.ID " +
-            "WHERE CRUISE.ID = #{id}")
+    @Select("SELECT * FROM CRUISE WHERE CRUISE.ID = #{id}")
     CruiseEntity findById(Long id);
 
     @Update("UPDATE CRUISE SET NAME = #{name}, DESCRIPTION = #{description}, CAPACITY = #{capacity} WHERE ID = #{id}")

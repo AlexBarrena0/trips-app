@@ -10,7 +10,7 @@ import java.util.Map;
 @Mapper
 public interface TripMapper {
 
-    @Insert("INSERT INTO TRIP (ROUTE, START_DATE, END_DATE, N_DIVES, PRICE, AVAILABLE_PLACES, CRUISE_ID, DESTINATION_ID) VALUES (#{route}, #{startDate}, #{endDate}, #{nDives}, #{price}, #{availablePlaces}, #{cruise.id}, #{destination.id})")
+    @Insert("INSERT INTO TRIP (ROUTE, START_DATE, END_DATE, DIVES, PRICE, AVAILABLE_PLACES, CRUISE_ID, DESTINATION_ID) VALUES (#{route}, #{startDate}, #{endDate}, #{dives}, #{price}, #{availablePlaces}, #{cruise.id}, #{destination.id})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     public void save(TripEntity tripEntity);
 
@@ -19,7 +19,7 @@ public interface TripMapper {
             @Result(property = "route", column = "route"),
             @Result(property = "startDate", column = "start_date"),
             @Result(property = "endDate", column = "end_date"),
-            @Result(property = "nDives", column = "n_dives"),
+            @Result(property = "dives", column = "dives"),
             @Result(property = "price", column = "price"),
             @Result(property = "availablePlaces", column = "available_places"),
             @Result(property = "cruise.id", column = "cruise_id"),

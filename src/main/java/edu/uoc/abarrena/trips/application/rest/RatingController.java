@@ -1,11 +1,14 @@
 package edu.uoc.abarrena.trips.application.rest;
 
-import edu.uoc.abarrena.trips.domain.service.RatingService;
-import edu.uoc.abarrena.trips.domain.converter.RatingConverter;
 import edu.uoc.abarrena.trips.application.dto.request.CreateRatingDto;
+import edu.uoc.abarrena.trips.application.dto.response.RatingDto;
 import edu.uoc.abarrena.trips.application.dto.response.Result;
+import edu.uoc.abarrena.trips.domain.converter.RatingConverter;
+import edu.uoc.abarrena.trips.domain.service.RatingService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Log4j2
 @RestController
@@ -27,6 +30,15 @@ public class RatingController {
             Long id = ratingService.createRating(RatingConverter.INSTANCE.toDomain(ratingDto));
 
             return new Result<>(id, "Rating created successfully");
+        }
+
+        @GetMapping
+        public Result<List<RatingDto>> findRatingByCruiseId(@RequestParam Long cruiseId) {
+            log.trace("Finding rating by cruise id " + cruiseId);
+
+            List<RatingDto> ratingsDto = RatingConverter.INSTANCE.toDto(ratingService.findRatingByCruiseId(cruiseId));
+
+            return new Result<>(ratingsDto, null);
         }
 
         @DeleteMapping("/{id}")

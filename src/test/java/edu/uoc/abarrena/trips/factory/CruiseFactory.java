@@ -16,7 +16,7 @@ public interface CruiseFactory {
     }
 
     public static CreateCruiseDto createCruiseDto() {
-        return new CreateCruiseDto("Cruise 1", "Cruise 1 description", 10);
+        return new CreateCruiseDto("Cruise 1", "Cruise 1 description", 10, 1L);
     }
 
     public static UpdateCruiseDto updateCruiseDto(Long expectedId) {

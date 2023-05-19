@@ -59,8 +59,6 @@ public class TripServiceImpl implements TripService {
         if (trip == null) {
             throw new EntityNotFoundException("Trip not found");
         }
-        Cruise cruise = cruiseService.findCruiseById(trip.getCruise().getId());
-        trip.setCruise(cruise);
         return trip;
     }
 
@@ -76,10 +74,6 @@ public class TripServiceImpl implements TripService {
 
     @Override
     public List<Trip> findTripByDestinationIdAndDateRange(Long id, LocalDate startDate, LocalDate endDate) throws EntityNotFoundException {
-        Destination destination = destinationService.findDestinationById(id);
-        if (destination == null) {
-            throw new EntityNotFoundException("Destination not found");
-        }
         Map<String, Object> params = new HashMap<>();
         params.put("destinationId", id);
         params.put("startDate", startDate);

@@ -1,5 +1,6 @@
 package edu.uoc.abarrena.trips.domain.converter;
 
+import edu.uoc.abarrena.trips.application.dto.response.RatingDto;
 import edu.uoc.abarrena.trips.domain.model.Rating;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.RatingEntity;
 import edu.uoc.abarrena.trips.application.dto.request.CreateRatingDto;
@@ -12,6 +13,8 @@ import java.util.List;
 public interface RatingConverter {
 
     public static final RatingConverter INSTANCE = Mappers.getMapper(RatingConverter.class);
+
+    List<RatingDto> toDto(List<Rating> rating);
 
     RatingEntity toEntity(Rating rating);
 

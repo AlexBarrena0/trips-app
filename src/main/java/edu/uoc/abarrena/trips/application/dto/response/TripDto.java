@@ -14,7 +14,7 @@ public class TripDto {
     private String route;
     private LocalDate startDate;
     private LocalDate endDate;
-    private Integer nDives;
+    private Integer dives;
     private Double price;
     private Integer availablePlaces;
     private CruiseDto cruise;

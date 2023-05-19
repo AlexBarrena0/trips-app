@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +17,6 @@ public class Cruise {
     private Double avgRoomRating;
     private Double avgCrewRating;
     private Double avgFoodRating;
-    private List<Rating> ratings;
     private Company company;
 
     public Cruise(Long id) {
