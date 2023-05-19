@@ -20,6 +20,7 @@ public class CruiseEntity {
     private Double avgCrewRating;
     private Double avgFoodRating;
     private List<RatingEntity> ratings;
+    private Long companyId;
 
     public CruiseEntity(Long id, String name, String description, Integer capacity) {
         this.id = id;

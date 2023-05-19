@@ -59,6 +59,8 @@ public class TripServiceImpl implements TripService {
         if (trip == null) {
             throw new EntityNotFoundException("Trip not found");
         }
+        Cruise cruise = cruiseService.findCruiseById(trip.getCruise().getId());
+        trip.setCruise(cruise);
         return trip;
     }
 

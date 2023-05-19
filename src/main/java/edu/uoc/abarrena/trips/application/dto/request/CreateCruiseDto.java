@@ -23,5 +23,9 @@ public class CreateCruiseDto {
 
     @NotBlank(message = "Cruise capacity is required")
     @Min(value = 1, message = "Cruise capacity must be greater than 0")
-    private int capacity;
+    private Integer capacity;
+
+    @NotBlank(message = "Company id is required")
+    private Long companyId;
+
 }

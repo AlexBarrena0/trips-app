@@ -8,7 +8,7 @@ import edu.uoc.abarrena.trips.application.dto.request.UpdateCruiseDto;
 public interface CruiseFactory {
 
     public static Cruise cruiseDomain(Long expectedId) {
-        return new Cruise(expectedId, "Cruise 1", "Cruise 1 description", 10);
+        return new Cruise(expectedId, "Cruise 1", "Cruise 1 description", 10, 1L);
     }
 
     public static CruiseEntity cruiseEntity(Long expectedId) {

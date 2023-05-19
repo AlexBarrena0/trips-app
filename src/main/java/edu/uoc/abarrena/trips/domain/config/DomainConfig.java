@@ -12,6 +12,7 @@ import edu.uoc.abarrena.trips.domain.service.impl.CruiseServiceImpl;
 import edu.uoc.abarrena.trips.domain.service.impl.DestinationServiceImpl;
 import edu.uoc.abarrena.trips.domain.service.impl.RatingServiceImpl;
 import edu.uoc.abarrena.trips.domain.service.impl.TripServiceImpl;
+import edu.uoc.abarrena.trips.infrastructure.clients.UserServiceClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -24,8 +25,8 @@ public class DomainConfig {
     }
 
     @Bean
-    public CruiseService cruiseService(CruiseRepository cruiseRepository) {
-        return new CruiseServiceImpl(cruiseRepository);
+    public CruiseService cruiseService(CruiseRepository cruiseRepository, UserServiceClient userServiceClient) {
+        return new CruiseServiceImpl(cruiseRepository, userServiceClient);
     }
 
     @Bean

@@ -20,4 +20,5 @@ public class CruiseDto {
     private Double avgCrewRating;
     private Double avgFoodRating;
     private List<RatingDto> ratings;
+    private CompanyDto company;
 }

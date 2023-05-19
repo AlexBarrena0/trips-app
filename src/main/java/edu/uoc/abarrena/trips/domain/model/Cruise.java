@@ -20,16 +20,18 @@ public class Cruise {
     private Double avgCrewRating;
     private Double avgFoodRating;
     private List<Rating> ratings;
+    private Company company;
 
     public Cruise(Long id) {
         this.id = id;
     }
 
-    public Cruise(Long id, String name, String description, int capacity) {
+    public Cruise(Long id, String name, String description, int capacity, Long companyId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.capacity = capacity;
+        this.company = new Company(companyId);
     }
 
 }

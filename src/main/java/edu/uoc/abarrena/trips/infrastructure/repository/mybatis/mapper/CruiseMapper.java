@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface CruiseMapper {
 
-    @Insert("INSERT INTO CRUISE (NAME, DESCRIPTION, CAPACITY) VALUES (#{name}, #{description}, #{capacity})")
+    @Insert("INSERT INTO CRUISE (NAME, DESCRIPTION, CAPACITY, COMPANY_ID) VALUES (#{name}, #{description}, #{capacity}, #{companyId})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void save(CruiseEntity cruiseEntity);
 
@@ -19,10 +19,11 @@ public interface CruiseMapper {
             @Result(property = "avgRoomRating", column = "avg_room_rating"),
             @Result(property = "avgCrewRating", column = "avg_crew_rating"),
             @Result(property = "avgFoodRating", column = "avg_food_rating"),
+            @Result(property = "companyId", column = "company_id"),
             @Result(property = "ratings", column = "id", many = @Many(select = "edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.RatingMapper.findByCruiseId"))
     })
     @Select("SELECT * FROM CRUISE " +
-            "JOIN RATING ON RATING.CRUISE_ID = CRUISE.ID " +
+            "LEFT JOIN RATING ON RATING.CRUISE_ID = CRUISE.ID " +
             "WHERE CRUISE.ID = #{id}")
     CruiseEntity findById(Long id);
 

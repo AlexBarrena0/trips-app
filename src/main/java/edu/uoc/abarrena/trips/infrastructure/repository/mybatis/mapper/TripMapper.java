@@ -22,11 +22,10 @@ public interface TripMapper {
             @Result(property = "nDives", column = "n_dives"),
             @Result(property = "price", column = "price"),
             @Result(property = "availablePlaces", column = "available_places"),
-            @Result(property = "cruise", column = "cruise_id", one = @One(select = "edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.CruiseMapper.findById")),
+            @Result(property = "cruise.id", column = "cruise_id"),
             @Result(property = "destination", column = "destination_id", one = @One(select = "edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.DestinationMapper.findById"))
     })
     @Select("SELECT * FROM TRIP " +
-            "JOIN CRUISE ON TRIP.CRUISE_ID = CRUISE.ID " +
             "JOIN DESTINATION ON TRIP.DESTINATION_ID = DESTINATION.ID " +
             "WHERE TRIP.ID = #{id}")
     public TripEntity findById(Long id);
