@@ -4,13 +4,17 @@ spring:
     username: abarrena0
     password: abarrena0_tfg
     driver-class-name: org.postgresql.Driver
+  main:
+    allow-circular-references: true
 feign:
   client:
     config:
       default:
         connectTimeout: 5000
         readTimeout: 5000
-        loggerLevel: full
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
 server:
   port: 8081
 application:

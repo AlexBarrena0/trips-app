@@ -1,6 +1,7 @@
 package edu.uoc.abarrena.trips.domain.service;
 
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
+import edu.uoc.abarrena.trips.domain.exceptions.PendingTripsException;
 import edu.uoc.abarrena.trips.domain.model.Cruise;
 
 /**
@@ -33,6 +34,6 @@ public interface CruiseService {
      * Deletes a cruise
      * @param id the id of the cruise to delete
      */
-    public void deleteCruise(Long id);
+    public void deleteCruise(Long id) throws PendingTripsException;
 
 }

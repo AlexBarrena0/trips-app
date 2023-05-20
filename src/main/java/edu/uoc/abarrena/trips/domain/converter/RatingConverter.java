@@ -5,6 +5,7 @@ import edu.uoc.abarrena.trips.domain.model.Rating;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.RatingEntity;
 import edu.uoc.abarrena.trips.application.dto.request.CreateRatingDto;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public interface RatingConverter {
 
     List<Rating> toModel(List<RatingEntity> ratingEntity);
 
+    @Mapping(target = "cruise.id", source = "cruiseId")
     Rating toDomain(CreateRatingDto createRatingDto);
 
 }

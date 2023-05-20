@@ -24,7 +24,7 @@ public interface CruiseMapper {
     @Select("SELECT * FROM CRUISE WHERE CRUISE.ID = #{id}")
     CruiseEntity findById(Long id);
 
-    @Update("UPDATE CRUISE SET NAME = #{name}, DESCRIPTION = #{description}, CAPACITY = #{capacity} WHERE ID = #{id}")
+    @Update("UPDATE CRUISE SET NAME = #{name}, DESCRIPTION = #{description}, CAPACITY = #{capacity}, AVG_SHIP_RATING = #{avgShipRating}, AVG_ROOM_RATING = #{avgRoomRating}, AVG_CREW_RATING = #{avgCrewRating}, AVG_FOOD_RATING = #{avgFoodRating} WHERE ID = #{id}")
     void update(CruiseEntity cruiseEntity);
 
     @Delete("DELETE FROM CRUISE WHERE ID = #{id}")

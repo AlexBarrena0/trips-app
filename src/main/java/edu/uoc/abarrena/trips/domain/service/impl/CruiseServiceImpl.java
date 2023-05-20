@@ -35,10 +35,7 @@ public class CruiseServiceImpl implements CruiseService {
         if (cruise == null) {
             throw new EntityNotFoundException("Cruise not found");
         }
-        Company company = userService.getCompany(id);
-        if (company == null) {
-            throw new EntityNotFoundException("Company not found");
-        }
+        Company company = userService.getCompany(cruise.getCompany().getId());
         cruise.setCompany(company);
         return cruise;
     }
