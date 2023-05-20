@@ -1,14 +1,16 @@
 package edu.uoc.abarrena.trips.domain.service.impl;
 
-import edu.uoc.abarrena.trips.domain.exceptions.UpdatedBookingException;
-import edu.uoc.abarrena.trips.domain.service.BookingService;
-import edu.uoc.abarrena.trips.domain.service.TripService;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.exceptions.NoAvailablePlacesException;
+import edu.uoc.abarrena.trips.domain.exceptions.UpdatedBookingException;
 import edu.uoc.abarrena.trips.domain.model.Booking;
 import edu.uoc.abarrena.trips.domain.model.BookingStatus;
+import edu.uoc.abarrena.trips.domain.model.Traveler;
 import edu.uoc.abarrena.trips.domain.model.Trip;
 import edu.uoc.abarrena.trips.domain.repository.BookingRepository;
+import edu.uoc.abarrena.trips.domain.service.BookingService;
+import edu.uoc.abarrena.trips.domain.service.TripService;
+import edu.uoc.abarrena.trips.domain.service.UserService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,9 +20,12 @@ public class BookingServiceImpl implements BookingService {
 
     private final TripService tripService;
 
-    public BookingServiceImpl(BookingRepository bookingRepository, TripService tripService) {
+    private final UserService userService;
+
+    public BookingServiceImpl(BookingRepository bookingRepository, TripService tripService, UserService userService) {
         this.bookingRepository = bookingRepository;
         this.tripService = tripService;
+        this.userService = userService;
     }
 
     @Override
@@ -28,6 +33,10 @@ public class BookingServiceImpl implements BookingService {
         Trip trip = tripService.findTripById(booking.getTrip().getId());
         if (trip == null) {
             throw new EntityNotFoundException("Trip not found");
+        }
+        Traveler traveler = userService.getTraveler(booking.getUserId());
+        if (traveler == null) {
+            throw new EntityNotFoundException("Traveler not found");
         }
         if (trip.getAvailablePlaces() == 0) {
             throw new NoAvailablePlacesException();

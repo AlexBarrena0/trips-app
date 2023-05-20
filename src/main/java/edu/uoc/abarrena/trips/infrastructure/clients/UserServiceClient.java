@@ -11,4 +11,7 @@ public interface UserServiceClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/companies/{id}", consumes = "application/json")
     public Result findCompanyById(@PathVariable("id") Long id);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/travelers/{id}", consumes = "application/json")
+    public Result findTravelerById(@PathVariable("id") Long id);
 }
