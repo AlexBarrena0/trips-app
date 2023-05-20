@@ -24,6 +24,11 @@ public class RatingRepositoryImpl implements RatingRepository {
     }
 
     @Override
+    public Rating findById(Long id) {
+        return RatingConverter.INSTANCE.toDomain(ratingMapper.findById(id));
+    }
+
+    @Override
     public List<Rating> findByCruiseId(Long id) {
         return RatingConverter.INSTANCE.toModel(ratingMapper.findByCruiseId(id));
     }

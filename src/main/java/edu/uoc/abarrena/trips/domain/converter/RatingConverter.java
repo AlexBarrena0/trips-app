@@ -21,6 +21,8 @@ public interface RatingConverter {
 
     List<Rating> toModel(List<RatingEntity> ratingEntity);
 
+    Rating toDomain(RatingEntity ratingEntity);
+
     @Mapping(target = "cruise.id", source = "cruiseId")
     Rating toDomain(CreateRatingDto createRatingDto);
 

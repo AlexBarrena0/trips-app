@@ -44,7 +44,9 @@ public class RatingServiceImpl implements RatingService {
 
     @Override
     public void deleteRating(Long id) {
+        Rating rating = ratingRepository.findById(id);
         ratingRepository.delete(id);
+        calculateAverageRatings(rating.getCruise());
     }
 
     private void calculateAverageRatings(Cruise cruise) {

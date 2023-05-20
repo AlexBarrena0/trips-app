@@ -13,6 +13,13 @@ public interface RatingRepository {
     public Long save(Rating rating);
 
     /**
+     * Finds a rating by its id
+     * @param id of the rating to find
+     * @return the rating with the given id
+     */
+    public Rating findById(Long id);
+
+    /**
      * Finds all the ratings of a cruise
      * @param id of the cruise to find
      * @return all the cruise's ratings
