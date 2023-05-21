@@ -11,7 +11,7 @@ public interface BookingMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void save(BookingEntity bookingEntity);
 
-    @Results(id = "bookingResult", value = {
+    @Results(id = "bookingResultMap", value = {
             @Result(property = "id", column = "id"),
             @Result(property = "status", column = "status"),
             @Result(property = "userId", column = "userId"),

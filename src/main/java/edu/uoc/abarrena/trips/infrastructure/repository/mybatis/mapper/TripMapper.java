@@ -14,7 +14,7 @@ public interface TripMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     public void save(TripEntity tripEntity);
 
-    @Results(id = "tripResult", value = {
+    @Results(id = "tripResultMap", value = {
             @Result(property = "id", column = "id"),
             @Result(property = "route", column = "route"),
             @Result(property = "startDate", column = "start_date"),

@@ -10,7 +10,7 @@ public interface CruiseMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void save(CruiseEntity cruiseEntity);
 
-    @Results(id = "cruiseResult", value = {
+    @Results(id = "cruiseResultMap", value = {
             @Result(property = "id", column = "id"),
             @Result(property = "name", column = "name"),
             @Result(property = "description", column = "description"),
