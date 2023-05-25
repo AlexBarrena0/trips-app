@@ -22,7 +22,7 @@ public interface TripMapper {
             @Result(property = "dives", column = "dives"),
             @Result(property = "price", column = "price"),
             @Result(property = "availablePlaces", column = "available_places"),
-            @Result(property = "cruise.id", column = "cruise_id"),
+            @Result(property = "cruise", column = "cruise_id", one = @One(select = "edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.CruiseMapper.findById")),
             @Result(property = "destination", column = "destination_id", one = @One(select = "edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.DestinationMapper.findById"))
     })
     @Select("SELECT * FROM TRIP " +
@@ -30,7 +30,7 @@ public interface TripMapper {
             "WHERE TRIP.ID = #{id}")
     public TripEntity findById(Long id);
 
-    @ResultMap("tripResult")
+    @ResultMap("tripResultMap")
     @SelectProvider(type = TripEntitySqlProvider.class, method = "search")
     public List<TripEntity> search(Map<String, Object> params);
 
