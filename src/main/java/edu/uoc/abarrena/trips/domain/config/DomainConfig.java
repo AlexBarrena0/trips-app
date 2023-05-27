@@ -15,8 +15,8 @@ public class DomainConfig {
     }
 
     @Bean
-    public CruiseService cruiseService(CruiseRepository cruiseRepository, UserService userService) {
-        return new CruiseServiceImpl(cruiseRepository, userService);
+    public CruiseService cruiseService(CruiseRepository cruiseRepository, UserService userService, CruiseImageRepository cruiseImageRepository) {
+        return new CruiseServiceImpl(cruiseRepository, userService, cruiseImageRepository);
     }
 
     @Bean

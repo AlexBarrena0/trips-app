@@ -47,4 +47,9 @@ public class RepositoryConfig {
     public RatingRepository ratingRepository(RatingMapper ratingMapper) {
         return new RatingRepositoryImpl(ratingMapper);
     }
+
+    @Bean
+    public CruiseImageRepository cruiseImageRepository(CruiseImageMapper cruiseImageMapper) {
+        return new CruiseImageRepositoryImpl(cruiseImageMapper);
+    }
 }
