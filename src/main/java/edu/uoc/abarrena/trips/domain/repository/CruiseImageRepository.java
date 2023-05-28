@@ -7,9 +7,9 @@ public interface CruiseImageRepository {
     /**
      * Save a cruise images
      * @param cruiseId the cruise id
-     * @param imageIds
+     * @param imagesIds the images ids
      */
-    public void save(Long cruiseId, List<Long> imageIds);
+    public void save(Long cruiseId, List<Long> imagesIds);
 
     /**
      * Find all the images of a cruise
@@ -20,7 +20,7 @@ public interface CruiseImageRepository {
 
     /**
      * Delete a cruise image
-     * @param imageId the cruise id
+     * @param cruiseId the cruise id
      */
-    public void deleteByImageId(Long imageId);
+    public void deleteByCruiseId(Long cruiseId);
 }

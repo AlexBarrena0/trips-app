@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -27,4 +28,8 @@ public class UpdateCruiseDto {
     @NotBlank(message = "Cruise capacity is required")
     @Min(value = 1, message = "Cruise capacity must be greater than 0")
     private int capacity;
+
+    private Long thumbnailId;
+
+    private List<Long> imagesIds;
 }

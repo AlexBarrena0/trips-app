@@ -31,7 +31,9 @@ public class CruiseServiceImpl implements CruiseService {
             throw new EntityNotFoundException("Company not found");
         }
         Long id = cruiseRepository.save(cruise);
-        cruiseImageRepository.save(id, cruise.getImagesIds());
+        if (cruise.getImagesIds() != null && !cruise.getImagesIds().isEmpty()) {
+            cruiseImageRepository.save(id, cruise.getImagesIds());
+        }
         return id;
     }
 
@@ -49,6 +51,10 @@ public class CruiseServiceImpl implements CruiseService {
     @Override
     public void updateCruise(Cruise cruise) {
         cruiseRepository.update(cruise);
+        cruiseImageRepository.deleteByCruiseId(cruise.getId());
+        if (cruise.getImagesIds() != null && !cruise.getImagesIds().isEmpty()) {
+            cruiseImageRepository.save(cruise.getId(), cruise.getImagesIds());
+        }
     }
 
     @Override

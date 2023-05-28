@@ -3,6 +3,7 @@ package edu.uoc.abarrena.trips.infrastructure.repository.mybatis;
 import edu.uoc.abarrena.trips.domain.repository.CruiseImageRepository;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.CruiseImageMapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class CruiseImageRepositoryImpl implements CruiseImageRepository {
@@ -14,8 +15,11 @@ public class CruiseImageRepositoryImpl implements CruiseImageRepository {
     }
 
     @Override
-    public void save(Long cruiseId, List<Long> imageIds) {
-        cruiseImageMapper.save(cruiseId, imageIds);
+    public void save(Long cruiseId, List<Long> imagesIds) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("cruiseId", cruiseId);
+        params.put("imagesIds", imagesIds);
+        cruiseImageMapper.save(params);
     }
 
     @Override
@@ -24,7 +28,7 @@ public class CruiseImageRepositoryImpl implements CruiseImageRepository {
     }
 
     @Override
-    public void deleteByImageId(Long imageId) {
-        cruiseImageMapper.deleteByImageId(imageId);
+    public void deleteByCruiseId(Long cruiseId) {
+        cruiseImageMapper.deleteByCruiseId(cruiseId);
     }
 }
