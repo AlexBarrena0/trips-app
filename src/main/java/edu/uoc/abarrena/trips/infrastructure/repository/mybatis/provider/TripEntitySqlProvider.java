@@ -11,6 +11,7 @@ public class TripEntitySqlProvider {
         sql.append("SELECT * FROM TRIP " +
                 "JOIN CRUISE ON TRIP.CRUISE_ID = CRUISE.ID " +
                 "JOIN DESTINATION ON TRIP.DESTINATION_ID = DESTINATION.ID " +
+                "LEFT JOIN BOOKING ON TRIP.ID = BOOKING.TRIP_ID " +
                 "WHERE START_DATE >= CURRENT_DATE ");
 
         if (params.get("cruiseId") != null) {
@@ -27,6 +28,9 @@ public class TripEntitySqlProvider {
         }
         if (params.get("companyId") != null) {
             sql.append("AND CRUISE.COMPANY_ID = #{companyId} ");
+        }
+        if (params.get("travelerId") != null) {
+            sql.append("AND BOOKING.TRAVELER_ID = #{travelerId} ");
         }
         sql.append("ORDER BY START_DATE DESC");
         return sql.toString();
