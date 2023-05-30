@@ -7,6 +7,8 @@ import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.CruiseEnt
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.CruiseMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class CruiseRepositoryImpl implements CruiseRepository {
 
@@ -26,6 +28,11 @@ public class CruiseRepositoryImpl implements CruiseRepository {
     @Override
     public Cruise findById(Long id) {
         return CruiseConverter.INSTANCE.toDomain(cruiseMapper.findById(id));
+    }
+
+    @Override
+    public List<Cruise> findByCompanyId(Long id) {
+        return CruiseConverter.INSTANCE.toDomain(cruiseMapper.findByCompanyId(id));
     }
 
     @Override

@@ -4,6 +4,8 @@ import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.exceptions.PendingTripsException;
 import edu.uoc.abarrena.trips.domain.model.Cruise;
 
+import java.util.List;
+
 /**
  * The cruise service
  */
@@ -23,6 +25,14 @@ public interface CruiseService {
      * @throws EntityNotFoundException if the cruise is not found
      */
     public Cruise findCruiseById(Long id) throws EntityNotFoundException;
+
+    /**
+     * Finds all cruises by its company id
+     * @param id the id of the company to find
+     * @return the cruises with the given company id
+     * @throws EntityNotFoundException if the company is not found
+     */
+    public List<Cruise> findByCompanyId(Long id) throws EntityNotFoundException;
 
     /**
      * Updates a cruise

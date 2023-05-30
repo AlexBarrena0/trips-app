@@ -9,6 +9,8 @@ import edu.uoc.abarrena.trips.domain.service.CruiseService;
 import edu.uoc.abarrena.trips.domain.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CruiseServiceImpl implements CruiseService {
 
@@ -46,6 +48,15 @@ public class CruiseServiceImpl implements CruiseService {
         Company company = userService.getCompany(cruise.getCompany().getId());
         cruise.setCompany(company);
         return cruise;
+    }
+
+    @Override
+    public List<Cruise> findByCompanyId(Long id) throws EntityNotFoundException {
+        Company company = userService.getCompany(id);
+        if (company == null) {
+            throw new EntityNotFoundException("Company not found");
+        }
+        return cruiseRepository.findByCompanyId(id);
     }
 
     @Override

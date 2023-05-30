@@ -34,6 +34,14 @@ public interface TripService {
     public List<Trip> findTripByCruiseId(Long id) throws EntityNotFoundException;
 
     /**
+     * Find a trip by its company id
+     * @param id the id of the company to find
+     * @return the trips with the given company id
+     * @throws EntityNotFoundException if the company does not exist
+     */
+    public List<Trip> findTripByCompanyId(Long id) throws EntityNotFoundException;
+
+    /**
      * Find a trip by its destination id and date range
      * @param id the id of the destination to find
      * @param startDate the start date of the trip

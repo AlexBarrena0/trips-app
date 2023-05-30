@@ -2,6 +2,8 @@ package edu.uoc.abarrena.trips.domain.repository;
 
 import edu.uoc.abarrena.trips.domain.model.Cruise;
 
+import java.util.List;
+
 public interface CruiseRepository {
 
     /**
@@ -17,6 +19,13 @@ public interface CruiseRepository {
      * @return the cruise with the given id
      */
     public Cruise findById(Long id);
+
+    /**
+     * Finds all cruises by its company id
+     * @param id of the company to find
+     * @return the cruises with the given company id
+     */
+    public List<Cruise> findByCompanyId(Long id);
 
     /**
      * Update a cruise

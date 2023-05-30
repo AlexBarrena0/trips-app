@@ -3,6 +3,8 @@ package edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.CruiseEntity;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface CruiseMapper {
 
@@ -25,6 +27,10 @@ public interface CruiseMapper {
     })
     @Select("SELECT * FROM CRUISE WHERE ID = #{id}")
     CruiseEntity findById(Long id);
+
+    @ResultMap("cruiseResultMap")
+    @Select("SELECT * FROM CRUISE WHERE COMPANY_ID = #{id}")
+    List<CruiseEntity> findByCompanyId(Long id);
 
     @Update("UPDATE CRUISE SET NAME = #{name}, DESCRIPTION = #{description}, CAPACITY = #{capacity}, AVG_SHIP_RATING = #{avgShipRating}, AVG_ROOM_RATING = #{avgRoomRating}, AVG_CREW_RATING = #{avgCrewRating}, AVG_FOOD_RATING = #{avgFoodRating}, THUMBNAIL_ID = #{thumbnailId} WHERE ID = #{id}")
     void update(CruiseEntity cruiseEntity);

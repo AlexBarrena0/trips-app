@@ -20,8 +20,8 @@ public class DomainConfig {
     }
 
     @Bean
-    public TripService tripService(TripRepository tripRepository, DestinationService destinationService, CruiseService cruiseService) {
-        return new TripServiceImpl(tripRepository, destinationService, cruiseService);
+    public TripService tripService(TripRepository tripRepository, DestinationService destinationService, CruiseService cruiseService, UserService userService) {
+        return new TripServiceImpl(tripRepository, destinationService, cruiseService, userService);
     }
 
     @Bean

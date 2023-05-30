@@ -1,13 +1,15 @@
 package edu.uoc.abarrena.trips.application.rest;
 
-import edu.uoc.abarrena.trips.domain.service.CruiseService;
-import edu.uoc.abarrena.trips.domain.converter.CruiseConverter;
 import edu.uoc.abarrena.trips.application.dto.request.CreateCruiseDto;
 import edu.uoc.abarrena.trips.application.dto.request.UpdateCruiseDto;
 import edu.uoc.abarrena.trips.application.dto.response.CruiseDto;
 import edu.uoc.abarrena.trips.application.dto.response.Result;
+import edu.uoc.abarrena.trips.domain.converter.CruiseConverter;
+import edu.uoc.abarrena.trips.domain.service.CruiseService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Log4j2
 @RestController
@@ -38,6 +40,15 @@ public class CruiseController {
         CruiseDto cruiseDto = CruiseConverter.INSTANCE.toDto(cruiseService.findCruiseById(id));
 
         return new Result<CruiseDto>(cruiseDto, null);
+    }
+
+    @GetMapping
+    public Result<List<CruiseDto>> findCruisesByCompanyId(@RequestParam Long companyId) {
+        log.trace("Retrieving cruises by company id " + companyId);
+
+        List<CruiseDto> cruises = CruiseConverter.INSTANCE.toDto(cruiseService.findByCompanyId(companyId));
+
+        return new Result<List<CruiseDto>>(cruises, null);
     }
 
     @PutMapping("/{id}")

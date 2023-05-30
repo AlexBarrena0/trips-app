@@ -1,5 +1,6 @@
 package edu.uoc.abarrena.trips.domain.service.impl;
 
+import edu.uoc.abarrena.trips.domain.model.Company;
 import edu.uoc.abarrena.trips.domain.service.CruiseService;
 import edu.uoc.abarrena.trips.domain.service.DestinationService;
 import edu.uoc.abarrena.trips.domain.service.TripService;
@@ -11,6 +12,7 @@ import edu.uoc.abarrena.trips.domain.model.Cruise;
 import edu.uoc.abarrena.trips.domain.model.Destination;
 import edu.uoc.abarrena.trips.domain.model.Trip;
 import edu.uoc.abarrena.trips.domain.repository.TripRepository;
+import edu.uoc.abarrena.trips.domain.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -27,10 +29,13 @@ public class TripServiceImpl implements TripService {
 
     private final CruiseService cruiseService;
 
-    public TripServiceImpl(TripRepository tripRepository, DestinationService destinationService, CruiseService cruiseService) {
+    private final UserService userService;
+
+    public TripServiceImpl(TripRepository tripRepository, DestinationService destinationService, CruiseService cruiseService, UserService userService) {
         this.tripRepository = tripRepository;
         this.destinationService = destinationService;
         this.cruiseService = cruiseService;
+        this.userService = userService;
     }
 
     @Override
@@ -69,6 +74,16 @@ public class TripServiceImpl implements TripService {
             throw new EntityNotFoundException("Cruise not found");
         }
         Map<String, Object> params = Map.of("cruiseId", id);
+        return tripRepository.search(params);
+    }
+
+    @Override
+    public List<Trip> findTripByCompanyId(Long id) throws EntityNotFoundException {
+        Company company = userService.getCompany(id);
+        if (company == null) {
+            throw new EntityNotFoundException("Company not found");
+        }
+        Map<String, Object> params = Map.of("companyId", id);
         return tripRepository.search(params);
     }
 

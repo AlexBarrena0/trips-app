@@ -49,7 +49,9 @@ public class TripController {
         List<TripDto> trips;
         if (params.getCruiseId() != null) {
             trips = TripConverter.INSTANCE.toDto(tripService.findTripByCruiseId(params.getCruiseId()));
-        } else {
+        } else if (params.getCompanyId() != null) {
+            trips = TripConverter.INSTANCE.toDto(tripService.findTripByCompanyId(params.getCompanyId()));
+        }else {
             trips = TripConverter.INSTANCE.toDto(tripService.findTripByDestinationIdAndDateRange(params.getDestinationId(), params.getStartDate(), params.getEndDate()));
         }
         return new Result<List<TripDto>>(trips, null);

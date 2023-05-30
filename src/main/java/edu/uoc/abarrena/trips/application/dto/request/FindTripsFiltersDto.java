@@ -14,4 +14,5 @@ public class FindTripsFiltersDto {
     private Long destinationId;
     private LocalDate startDate;
     private LocalDate endDate;
+    private Long companyId;
 }

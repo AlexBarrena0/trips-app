@@ -25,6 +25,9 @@ public class TripEntitySqlProvider {
         if (params.get("endDate") != null) {
             sql.append("AND END_DATE <= #{endDate} ");
         }
+        if (params.get("companyId") != null) {
+            sql.append("AND CRUISE.COMPANY_ID = #{companyId} ");
+        }
         sql.append("ORDER BY START_DATE DESC");
         return sql.toString();
     }
