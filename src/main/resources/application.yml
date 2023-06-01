@@ -15,6 +15,9 @@ feign:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+jwt:
+  secret: abarrena0_uoc_edu
+  expiration: 86400000
 server:
   port: 8081
 application:
