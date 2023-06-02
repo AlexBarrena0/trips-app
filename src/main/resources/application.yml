@@ -4,8 +4,8 @@ spring:
     username: abarrena0
     password: abarrena0_tfg
     driver-class-name: org.postgresql.Driver
-  main:
-    allow-circular-references: true
+  kafka:
+    bootstrap-servers: localhost:19092
 feign:
   client:
     config:

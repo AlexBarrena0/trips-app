@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface BookingMapper {
 
-    @Insert("INSERT INTO BOOKING (STATUS, TRIP_ID, USER_ID) VALUES (#{status}, #{trip.id}, #{userId})")
+    @Insert("INSERT INTO BOOKING (STATUS, TRIP_ID, TRAVELER_ID) VALUES (#{status}, #{trip.id}, #{travelerId})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void save(BookingEntity bookingEntity);
 

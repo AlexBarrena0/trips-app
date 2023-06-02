@@ -12,5 +12,5 @@ public class BookingEntity {
         private Long id;
         private String status;
         private TripEntity trip;
-        private Long userId;
+        private Long travelerId;
 }

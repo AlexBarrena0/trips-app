@@ -1,10 +1,12 @@
 package edu.uoc.abarrena.trips.domain.config;
 
+import edu.uoc.abarrena.trips.domain.model.Notification;
 import edu.uoc.abarrena.trips.domain.repository.*;
 import edu.uoc.abarrena.trips.domain.service.*;
 import edu.uoc.abarrena.trips.domain.service.impl.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.core.KafkaTemplate;
 
 @Configuration
 public class DomainConfig {
@@ -30,7 +32,12 @@ public class DomainConfig {
     }
 
     @Bean
-    public  BookingService bookingService(BookingRepository bookingRepository, TripService tripService, UserService userService) {
-        return new BookingServiceImpl(bookingRepository, tripService, userService);
+    public  BookingService bookingService(BookingRepository bookingRepository, TripService tripService, UserService userService, NotificationService notificationService) {
+        return new BookingServiceImpl(bookingRepository, tripService, userService, notificationService);
+    }
+
+    @Bean
+    public NotificationService notificationService(KafkaTemplate<String, Notification> notificationKafkaTemplate) {
+        return new NotificationServiceImpl(notificationKafkaTemplate);
     }
 }

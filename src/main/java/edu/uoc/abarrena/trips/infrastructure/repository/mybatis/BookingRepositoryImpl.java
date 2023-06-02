@@ -5,7 +5,9 @@ import edu.uoc.abarrena.trips.domain.model.Booking;
 import edu.uoc.abarrena.trips.domain.repository.BookingRepository;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.BookingEntity;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.BookingMapper;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class BookingRepositoryImpl implements BookingRepository {
 
     private final BookingMapper bookingMapper;

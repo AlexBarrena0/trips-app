@@ -14,6 +14,6 @@ public class CreateBookingDto {
     @NotBlank(message = "Trip id is required")
     Long tripId;
 
-    @NotBlank(message = "User id is required")
-    Long userId;
+    @NotBlank(message = "Traveler id is required")
+    Long travelerId;
 }

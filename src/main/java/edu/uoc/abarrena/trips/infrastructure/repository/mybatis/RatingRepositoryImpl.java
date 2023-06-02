@@ -5,9 +5,11 @@ import edu.uoc.abarrena.trips.domain.model.Rating;
 import edu.uoc.abarrena.trips.domain.repository.RatingRepository;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.RatingEntity;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.RatingMapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class RatingRepositoryImpl implements RatingRepository {
 
     private final RatingMapper ratingMapper;

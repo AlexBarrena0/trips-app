@@ -12,11 +12,11 @@ public class  Booking {
     private Long id;
     private String status;
     private Trip trip;
-    private Long userId;
+    private Long travelerId;
 
-    public Booking(Long tripId, Long userId) {
+    public Booking(Long tripId, Long travelerId) {
         this.trip = new Trip(tripId);
-        this.userId = userId;
+        this.travelerId = travelerId;
         this.status = BookingStatus.PENDING.name();
     }
 }

@@ -2,10 +2,12 @@ package edu.uoc.abarrena.trips.infrastructure.repository.mybatis;
 
 import edu.uoc.abarrena.trips.domain.repository.CruiseImageRepository;
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.CruiseImageMapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
 
+@Repository
 public class CruiseImageRepositoryImpl implements CruiseImageRepository {
 
     private final CruiseImageMapper cruiseImageMapper;

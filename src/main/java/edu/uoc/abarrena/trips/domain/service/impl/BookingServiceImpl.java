@@ -3,12 +3,10 @@ package edu.uoc.abarrena.trips.domain.service.impl;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.exceptions.NoAvailablePlacesException;
 import edu.uoc.abarrena.trips.domain.exceptions.UpdatedBookingException;
-import edu.uoc.abarrena.trips.domain.model.Booking;
-import edu.uoc.abarrena.trips.domain.model.BookingStatus;
-import edu.uoc.abarrena.trips.domain.model.Traveler;
-import edu.uoc.abarrena.trips.domain.model.Trip;
+import edu.uoc.abarrena.trips.domain.model.*;
 import edu.uoc.abarrena.trips.domain.repository.BookingRepository;
 import edu.uoc.abarrena.trips.domain.service.BookingService;
+import edu.uoc.abarrena.trips.domain.service.NotificationService;
 import edu.uoc.abarrena.trips.domain.service.TripService;
 import edu.uoc.abarrena.trips.domain.service.UserService;
 import org.springframework.stereotype.Service;
@@ -22,10 +20,13 @@ public class BookingServiceImpl implements BookingService {
 
     private final UserService userService;
 
-    public BookingServiceImpl(BookingRepository bookingRepository, TripService tripService, UserService userService) {
+    private final NotificationService notificationService;
+
+    public BookingServiceImpl(BookingRepository bookingRepository, TripService tripService, UserService userService, NotificationService notificationService) {
         this.bookingRepository = bookingRepository;
         this.tripService = tripService;
         this.userService = userService;
+        this.notificationService = notificationService;
     }
 
     @Override
@@ -34,7 +35,7 @@ public class BookingServiceImpl implements BookingService {
         if (trip == null) {
             throw new EntityNotFoundException("Trip not found");
         }
-        Traveler traveler = userService.getTraveler(booking.getUserId());
+        Traveler traveler = userService.getTraveler(booking.getTravelerId());
         if (traveler == null) {
             throw new EntityNotFoundException("Traveler not found");
         }
@@ -42,7 +43,9 @@ public class BookingServiceImpl implements BookingService {
             throw new NoAvailablePlacesException();
         }
         booking.setStatus(BookingStatus.PENDING.name());
-        return bookingRepository.save(booking);
+        Long id = bookingRepository.save(booking);
+        notificationService.sendNotification(new Notification(NotificationType.RESERVATION_PENDING, 1L));
+        return id;
     }
 
     @Override
@@ -54,6 +57,9 @@ public class BookingServiceImpl implements BookingService {
         bookingRepository.update(booking);
         if (currentBooking.getStatus().equals(BookingStatus.CONFIRMED.name())) {
             tripService.bookPlace(currentBooking.getTrip().getId());
+            notificationService.sendNotification(new Notification(NotificationType.RESERVATION_CONFIRMED, 1L));
+        } else if (currentBooking.getStatus().equals(BookingStatus.REJECTED.name())) {
+            notificationService.sendNotification(new Notification(NotificationType.RESERVATION_REJECTED, 1L));
         }
     }
 }
