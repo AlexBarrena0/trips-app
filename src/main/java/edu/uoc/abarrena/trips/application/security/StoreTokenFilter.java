@@ -1,4 +1,4 @@
-package edu.uoc.abarrena.trips.security;
+package edu.uoc.abarrena.trips.application.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

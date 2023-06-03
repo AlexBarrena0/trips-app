@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.trips;
 
-import edu.uoc.abarrena.trips.security.StoreTokenFilter;
+import edu.uoc.abarrena.trips.application.security.StoreTokenFilter;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

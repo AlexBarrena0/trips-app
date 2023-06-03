@@ -44,7 +44,7 @@ public class BookingServiceImpl implements BookingService {
         }
         booking.setStatus(BookingStatus.PENDING.name());
         Long id = bookingRepository.save(booking);
-        notificationService.sendNotification(new Notification(NotificationType.RESERVATION_PENDING, 1L));
+        notificationService.sendNotification(new Notification(NotificationType.RESERVATION_PENDING, trip.getCruise().getCompany().getId()));
         return id;
     }
 
@@ -55,11 +55,12 @@ public class BookingServiceImpl implements BookingService {
             throw new UpdatedBookingException();
         }
         bookingRepository.update(booking);
+        Trip trip = tripService.findTripById(currentBooking.getTrip().getId());
         if (currentBooking.getStatus().equals(BookingStatus.CONFIRMED.name())) {
             tripService.bookPlace(currentBooking.getTrip().getId());
-            notificationService.sendNotification(new Notification(NotificationType.RESERVATION_CONFIRMED, 1L));
+            notificationService.sendNotification(new Notification(NotificationType.RESERVATION_CONFIRMED, trip.getCruise().getCompany().getId()));
         } else if (currentBooking.getStatus().equals(BookingStatus.REJECTED.name())) {
-            notificationService.sendNotification(new Notification(NotificationType.RESERVATION_REJECTED, 1L));
+            notificationService.sendNotification(new Notification(NotificationType.RESERVATION_REJECTED, trip.getCruise().getCompany().getId()));
         }
     }
 }

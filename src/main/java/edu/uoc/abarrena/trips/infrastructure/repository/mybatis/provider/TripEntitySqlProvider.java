@@ -33,7 +33,7 @@ public class TripEntitySqlProvider {
             sql.append("AND BOOKING.TRAVELER_ID = #{travelerId} " +
                     "AND BOOKING.STATUS = 'CONFIRMED' ");
         } else {
-            sql.append("WHERE START_DATE >= CURRENT_DATE ");
+            sql.append("AND START_DATE >= CURRENT_DATE ");
         }
         sql.append("ORDER BY START_DATE DESC");
         return sql.toString();

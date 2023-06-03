@@ -1,15 +1,12 @@
 package edu.uoc.abarrena.trips.domain.service.impl;
 
-import edu.uoc.abarrena.trips.domain.model.*;
-import edu.uoc.abarrena.trips.domain.service.CruiseService;
-import edu.uoc.abarrena.trips.domain.service.DestinationService;
-import edu.uoc.abarrena.trips.domain.service.TripService;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.exceptions.InconsistentDatesException;
 import edu.uoc.abarrena.trips.domain.exceptions.NoAvailablePlacesException;
 import edu.uoc.abarrena.trips.domain.exceptions.OverlappingTripException;
+import edu.uoc.abarrena.trips.domain.model.*;
 import edu.uoc.abarrena.trips.domain.repository.TripRepository;
-import edu.uoc.abarrena.trips.domain.service.UserService;
+import edu.uoc.abarrena.trips.domain.service.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -28,11 +25,14 @@ public class TripServiceImpl implements TripService {
 
     private final UserService userService;
 
-    public TripServiceImpl(TripRepository tripRepository, DestinationService destinationService, CruiseService cruiseService, UserService userService) {
+    private final NotificationService notificationService;
+
+    public TripServiceImpl(TripRepository tripRepository, DestinationService destinationService, CruiseService cruiseService, UserService userService, NotificationService notificationService) {
         this.tripRepository = tripRepository;
         this.destinationService = destinationService;
         this.cruiseService = cruiseService;
         this.userService = userService;
+        this.notificationService = notificationService;
     }
 
     @Override
@@ -52,7 +52,17 @@ public class TripServiceImpl implements TripService {
             throw new OverlappingTripException();
         }
         trip.setAvailablePlaces(cruise.getCapacity());
-        return tripRepository.save(trip);
+        Long id = tripRepository.save(trip);
+        sendNotification(trip);
+        return id;
+    }
+
+    private void sendNotification(Trip trip) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("destinationId", trip.getDestination().getId());
+        params.put("startDate", trip.getStartDate().toString());
+        params.put("endDate", trip.getEndDate().toString());
+        notificationService.sendNotification(new Notification(NotificationType.NEW_TRIP, params));
     }
 
     @Override

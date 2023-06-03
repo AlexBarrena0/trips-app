@@ -1,4 +1,4 @@
-package edu.uoc.abarrena.trips.security;
+package edu.uoc.abarrena.trips.application.security;
 
 import lombok.experimental.UtilityClass;
 
