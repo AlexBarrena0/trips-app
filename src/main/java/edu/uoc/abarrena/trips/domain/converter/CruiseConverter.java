@@ -24,6 +24,7 @@ public interface CruiseConverter {
     Cruise toDomain(CreateCruiseDto createCruiseDto);
 
     Cruise toDomain(UpdateCruiseDto updateCruiseDto);
+
     @Mapping(target = "company.id", source = "companyId")
     Cruise toDomain(CruiseEntity cruiseEntity);
 

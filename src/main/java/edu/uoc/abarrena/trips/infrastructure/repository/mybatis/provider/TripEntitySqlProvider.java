@@ -11,7 +11,6 @@ public class TripEntitySqlProvider {
         sql.append("SELECT * FROM TRIP " +
                 "JOIN CRUISE ON TRIP.CRUISE_ID = CRUISE.ID " +
                 "JOIN DESTINATION ON TRIP.DESTINATION_ID = DESTINATION.ID " +
-                "LEFT JOIN BOOKING ON TRIP.ID = BOOKING.TRIP_ID " +
                 "WHERE 1=1 ");
 
         if (params.get("cruiseId") != null) {
@@ -30,8 +29,10 @@ public class TripEntitySqlProvider {
             sql.append("AND CRUISE.COMPANY_ID = #{companyId} ");
         }
         if (params.get("travelerId") != null) {
-            sql.append("AND BOOKING.TRAVELER_ID = #{travelerId} " +
-                    "AND BOOKING.STATUS = 'CONFIRMED' ");
+            sql.append("AND TRIP.ID = " +
+                    "(SELECT TRIP_ID FROM BOOKING " +
+                    "WHERE BOOKING.TRAVELER_ID = #{travelerId} " +
+                    "AND BOOKING.STATUS = 'CONFIRMED')");
         } else {
             sql.append("AND START_DATE >= CURRENT_DATE ");
         }

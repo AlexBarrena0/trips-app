@@ -26,6 +26,7 @@ public interface TripConverter {
 
     Trip toDomain(UpdateTripDto updateTripDto);
 
+    @Mapping(target = "cruise.company.id", source = "cruise.companyId")
     Trip toDomain(TripEntity tripEntity);
 
     List<Trip> toDomain(List<TripEntity> tripEntity);
