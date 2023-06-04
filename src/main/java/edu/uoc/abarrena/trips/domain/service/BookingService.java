@@ -8,13 +8,15 @@ public interface BookingService {
 
     /**
      * Book a trip
+     *
      * @param booking the booking to create
      */
-    public Long bookTrip(Booking booking) throws EntityNotFoundException, NoAvailablePlacesException;
+    Long bookTrip(Booking booking) throws EntityNotFoundException, NoAvailablePlacesException;
 
     /**
      * Update booking status
+     *
      * @param booking the booking to update
      */
-    public void updateBookingStatus(Booking booking);
+    void updateBookingStatus(Booking booking);
 }

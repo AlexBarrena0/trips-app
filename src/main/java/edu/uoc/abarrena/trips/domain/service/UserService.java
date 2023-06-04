@@ -7,15 +7,17 @@ public interface UserService {
 
     /**
      * Finds a traveler by its id
+     *
      * @param id the id of the traveler to find
      * @return the traveler
      */
-    public Traveler getTraveler(Long id);
+    Traveler getTraveler(Long id);
 
     /**
      * Finds a company by its id
+     *
      * @param id the id of the company to find
      * @return the company
      */
-    public Company getCompany(Long id);
+    Company getCompany(Long id);
 }

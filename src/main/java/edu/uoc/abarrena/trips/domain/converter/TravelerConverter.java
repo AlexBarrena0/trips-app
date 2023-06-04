@@ -10,7 +10,7 @@ import java.util.HashMap;
 @Mapper(componentModel = "spring")
 public interface TravelerConverter {
 
-    public final TravelerConverter INSTANCE = Mappers.getMapper(TravelerConverter.class);
+    TravelerConverter INSTANCE = Mappers.getMapper(TravelerConverter.class);
 
 
     default Traveler toDomain(Result<HashMap<String, Object>> companyResult) {

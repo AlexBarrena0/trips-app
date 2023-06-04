@@ -10,7 +10,7 @@ import java.util.HashMap;
 @Mapper(componentModel = "spring")
 public interface CompanyConverter {
 
-    public final CompanyConverter INSTANCE = Mappers.getMapper(CompanyConverter.class);
+    CompanyConverter INSTANCE = Mappers.getMapper(CompanyConverter.class);
 
 
     default Company toDomain(Result<HashMap<String, Object>> companyResult) {

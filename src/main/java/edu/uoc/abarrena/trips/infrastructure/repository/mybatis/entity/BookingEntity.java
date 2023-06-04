@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BookingEntity {
 
-        private Long id;
-        private String status;
-        private TripEntity trip;
-        private Long travelerId;
+    private Long id;
+    private String status;
+    private TripEntity trip;
+    private Long travelerId;
 }

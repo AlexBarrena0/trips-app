@@ -17,6 +17,7 @@ public class DestinationRepositoryImpl implements DestinationRepository {
     public DestinationRepositoryImpl(DestinationMapper destinationMapper) {
         this.destinationMapper = destinationMapper;
     }
+
     @Override
     public Long save(Destination destination) {
         DestinationEntity destinationEntity = DestinationConverter.INSTANCE.toEntity(destination);

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class  Booking {
+public class Booking {
 
     private Long id;
     private String status;

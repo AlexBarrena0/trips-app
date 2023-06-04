@@ -131,9 +131,6 @@ public class TripServiceImpl implements TripService {
     private boolean isTripOverlapping(Trip trip) {
         Map<String, Object> params = Map.of("cruiseId", trip.getCruise().getId(), "startDate", trip.getStartDate(), "endDate", trip.getEndDate());
         List<Trip> trips = tripRepository.search(params);
-        if (trips.size() > 0) {
-            return true;
-        }
-        return false;
+        return trips.size() > 0;
     }
 }

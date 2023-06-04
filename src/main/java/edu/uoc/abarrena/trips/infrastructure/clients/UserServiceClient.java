@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface UserServiceClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/companies/{id}", consumes = "application/json")
-    public Result findCompanyById(@RequestHeader("Authorization") String token, @PathVariable("id") Long id);
+    Result findCompanyById(@RequestHeader("Authorization") String token, @PathVariable("id") Long id);
 
     @RequestMapping(method = RequestMethod.GET, value = "/travelers/{id}", consumes = "application/json")
-    public Result findTravelerById(@RequestHeader("Authorization") String token, @PathVariable("id") Long id);
+    Result findTravelerById(@RequestHeader("Authorization") String token, @PathVariable("id") Long id);
 }

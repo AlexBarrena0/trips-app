@@ -1,7 +1,10 @@
 package edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper;
 
 import edu.uoc.abarrena.trips.infrastructure.repository.mybatis.provider.CruiseImageEntitySqlProvider;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,11 +13,11 @@ import java.util.List;
 public interface CruiseImageMapper {
 
     @InsertProvider(type = CruiseImageEntitySqlProvider.class, method = "save")
-    public void save(HashMap<String, Object> params);
+    void save(HashMap<String, Object> params);
 
     @Select("SELECT IMAGE_ID FROM CRUISE_IMAGE WHERE CRUISE_ID = #{cruiseId}")
-    public List<Long> findByCruiseId(Long cruiseId);
+    List<Long> findByCruiseId(Long cruiseId);
 
     @Delete("DELETE FROM CRUISE_IMAGE WHERE CRUISE_ID = #{cruiseId}")
-    public void deleteByCruiseId(Long cruiseId);
+    void deleteByCruiseId(Long cruiseId);
 }

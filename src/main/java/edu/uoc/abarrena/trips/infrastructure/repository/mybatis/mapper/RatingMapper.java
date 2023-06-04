@@ -12,14 +12,14 @@ public interface RatingMapper {
     void save(RatingEntity ratingEntity);
 
     @Results(id = "ratingResultMap", value = {
-        @Result(property = "id", column = "id"),
-        @Result(property = "ship", column = "ship"),
-        @Result(property = "room", column = "room"),
-        @Result(property = "crew", column = "crew"),
-        @Result(property = "food", column = "food"),
-        @Result(property = "comment", column = "comment"),
-        @Result(property = "cruise", column = "cruise_id", javaType = edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.CruiseEntity.class,
-            one = @One(select = "edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.CruiseMapper.findById"))
+            @Result(property = "id", column = "id"),
+            @Result(property = "ship", column = "ship"),
+            @Result(property = "room", column = "room"),
+            @Result(property = "crew", column = "crew"),
+            @Result(property = "food", column = "food"),
+            @Result(property = "comment", column = "comment"),
+            @Result(property = "cruise", column = "cruise_id", javaType = edu.uoc.abarrena.trips.infrastructure.repository.mybatis.entity.CruiseEntity.class,
+                    one = @One(select = "edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.CruiseMapper.findById"))
     })
     @Select("SELECT * FROM RATING WHERE ID = #{id}")
     RatingEntity findById(Long id);

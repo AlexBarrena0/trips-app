@@ -13,37 +13,42 @@ public interface CruiseService {
 
     /**
      * Creates a new cruise
+     *
      * @param cruise the cruise to create
      * @return the id of the created cruise
      */
-    public Long createCruise(Cruise cruise);
+    Long createCruise(Cruise cruise);
 
     /**
      * Finds a cruise by its id
+     *
      * @param id the id of the cruise to find
      * @return the cruise with the given id
      * @throws EntityNotFoundException if the cruise is not found
      */
-    public Cruise findCruiseById(Long id) throws EntityNotFoundException;
+    Cruise findCruiseById(Long id) throws EntityNotFoundException;
 
     /**
      * Finds all cruises by its company id
+     *
      * @param id the id of the company to find
      * @return the cruises with the given company id
      * @throws EntityNotFoundException if the company is not found
      */
-    public List<Cruise> findByCompanyId(Long id) throws EntityNotFoundException;
+    List<Cruise> findByCompanyId(Long id) throws EntityNotFoundException;
 
     /**
      * Updates a cruise
+     *
      * @param cruise the cruise to update
      */
-    public void updateCruise(Cruise cruise);
+    void updateCruise(Cruise cruise);
 
     /**
      * Deletes a cruise
+     *
      * @param id the id of the cruise to delete
      */
-    public void deleteCruise(Long id) throws PendingTripsException;
+    void deleteCruise(Long id) throws PendingTripsException;
 
 }

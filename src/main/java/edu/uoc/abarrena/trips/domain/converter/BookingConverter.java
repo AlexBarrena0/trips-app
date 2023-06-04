@@ -11,7 +11,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper(componentModel = "spring")
 public interface BookingConverter {
 
-    public static final BookingConverter INSTANCE = Mappers.getMapper(BookingConverter.class);
+    BookingConverter INSTANCE = Mappers.getMapper(BookingConverter.class);
 
     Booking toDomain(BookingEntity bookingEntity);
 

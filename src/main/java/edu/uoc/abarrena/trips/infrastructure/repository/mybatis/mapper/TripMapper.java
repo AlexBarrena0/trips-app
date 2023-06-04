@@ -12,7 +12,7 @@ public interface TripMapper {
 
     @Insert("INSERT INTO TRIP (ROUTE, START_DATE, END_DATE, DIVES, PRICE, AVAILABLE_PLACES, CRUISE_ID, DESTINATION_ID) VALUES (#{route}, #{startDate}, #{endDate}, #{dives}, #{price}, #{availablePlaces}, #{cruise.id}, #{destination.id})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-    public void save(TripEntity tripEntity);
+    void save(TripEntity tripEntity);
 
     @Results(id = "tripResultMap", value = {
             @Result(property = "id", column = "id"),
@@ -28,12 +28,12 @@ public interface TripMapper {
     @Select("SELECT * FROM TRIP " +
             "JOIN DESTINATION ON TRIP.DESTINATION_ID = DESTINATION.ID " +
             "WHERE TRIP.ID = #{id}")
-    public TripEntity findById(Long id);
+    TripEntity findById(Long id);
 
     @ResultMap("tripResultMap")
     @SelectProvider(type = TripEntitySqlProvider.class, method = "search")
-    public List<TripEntity> search(Map<String, Object> params);
+    List<TripEntity> search(Map<String, Object> params);
 
     @UpdateProvider(type = TripEntitySqlProvider.class, method = "update")
-    public void update(TripEntity tripEntity);
+    void update(TripEntity tripEntity);
 }

@@ -1,10 +1,10 @@
 package edu.uoc.abarrena.trips.application.rest;
 
-import edu.uoc.abarrena.trips.domain.service.DestinationService;
-import edu.uoc.abarrena.trips.domain.converter.DestinationConverter;
 import edu.uoc.abarrena.trips.application.dto.request.CreateDestinationDto;
 import edu.uoc.abarrena.trips.application.dto.response.DestinationDto;
 import edu.uoc.abarrena.trips.application.dto.response.Result;
+import edu.uoc.abarrena.trips.domain.converter.DestinationConverter;
+import edu.uoc.abarrena.trips.domain.service.DestinationService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,29 +15,29 @@ import java.util.List;
 @RequestMapping(DestinationController.BASE_PATH)
 public class DestinationController {
 
-        public static final String BASE_PATH = "/destinations";
+    public static final String BASE_PATH = "/destinations";
 
-        private final DestinationService destinationService;
+    private final DestinationService destinationService;
 
-        public DestinationController(DestinationService destinationService) {
-            this.destinationService = destinationService;
-        }
+    public DestinationController(DestinationService destinationService) {
+        this.destinationService = destinationService;
+    }
 
-        @PostMapping
-        public Result<Long> createDestination(@RequestBody CreateDestinationDto createDestinationDto) {
-            log.trace("Creating destination " + createDestinationDto);
+    @PostMapping
+    public Result<Long> createDestination(@RequestBody CreateDestinationDto createDestinationDto) {
+        log.trace("Creating destination " + createDestinationDto);
 
-            Long destinationId = destinationService.createDestination(DestinationConverter.INSTANCE.toDomain(createDestinationDto));
+        Long destinationId = destinationService.createDestination(DestinationConverter.INSTANCE.toDomain(createDestinationDto));
 
-            return new Result<Long>(destinationId, "Destination created successfully");
-        }
+        return new Result<Long>(destinationId, "Destination created successfully");
+    }
 
-        @GetMapping
-        public Result<List<DestinationDto>> findAllDestinations() {
-            log.trace("Retrieving all destinations");
+    @GetMapping
+    public Result<List<DestinationDto>> findAllDestinations() {
+        log.trace("Retrieving all destinations");
 
-            List<DestinationDto> destinations = DestinationConverter.INSTANCE.toDto(destinationService.findAllDestinations());
-            return new Result<List<DestinationDto>>(destinations, null);
-        }
+        List<DestinationDto> destinations = DestinationConverter.INSTANCE.toDto(destinationService.findAllDestinations());
+        return new Result<List<DestinationDto>>(destinations, null);
+    }
 
 }

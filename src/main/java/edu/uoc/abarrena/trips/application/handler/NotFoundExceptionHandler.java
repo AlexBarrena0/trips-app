@@ -1,7 +1,7 @@
 package edu.uoc.abarrena.trips.application.handler;
 
-import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.application.dto.response.Result;
+import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.ControllerAdvice;

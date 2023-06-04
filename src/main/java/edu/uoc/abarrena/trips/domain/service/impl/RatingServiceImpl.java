@@ -1,11 +1,11 @@
 package edu.uoc.abarrena.trips.domain.service.impl;
 
-import edu.uoc.abarrena.trips.domain.service.CruiseService;
-import edu.uoc.abarrena.trips.domain.service.RatingService;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.model.Cruise;
 import edu.uoc.abarrena.trips.domain.model.Rating;
 import edu.uoc.abarrena.trips.domain.repository.RatingRepository;
+import edu.uoc.abarrena.trips.domain.service.CruiseService;
+import edu.uoc.abarrena.trips.domain.service.RatingService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

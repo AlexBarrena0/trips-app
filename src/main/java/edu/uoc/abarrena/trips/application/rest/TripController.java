@@ -1,12 +1,12 @@
 package edu.uoc.abarrena.trips.application.rest;
 
-import edu.uoc.abarrena.trips.domain.service.TripService;
-import edu.uoc.abarrena.trips.domain.converter.TripConverter;
 import edu.uoc.abarrena.trips.application.dto.request.CreateTripDto;
 import edu.uoc.abarrena.trips.application.dto.request.FindTripsFiltersDto;
 import edu.uoc.abarrena.trips.application.dto.request.UpdateTripDto;
 import edu.uoc.abarrena.trips.application.dto.response.Result;
 import edu.uoc.abarrena.trips.application.dto.response.TripDto;
+import edu.uoc.abarrena.trips.domain.converter.TripConverter;
+import edu.uoc.abarrena.trips.domain.service.TripService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 

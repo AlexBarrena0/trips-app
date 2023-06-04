@@ -1,10 +1,10 @@
 package edu.uoc.abarrena.trips.application.rest;
 
-import edu.uoc.abarrena.trips.domain.service.BookingService;
-import edu.uoc.abarrena.trips.domain.converter.BookingConverter;
 import edu.uoc.abarrena.trips.application.dto.request.CreateBookingDto;
 import edu.uoc.abarrena.trips.application.dto.request.UpdateBookingDto;
 import edu.uoc.abarrena.trips.application.dto.response.Result;
+import edu.uoc.abarrena.trips.domain.converter.BookingConverter;
+import edu.uoc.abarrena.trips.domain.service.BookingService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 

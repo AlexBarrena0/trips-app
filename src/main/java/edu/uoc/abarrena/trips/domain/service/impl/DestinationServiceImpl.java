@@ -1,10 +1,10 @@
 package edu.uoc.abarrena.trips.domain.service.impl;
 
-import edu.uoc.abarrena.trips.domain.service.DestinationService;
 import edu.uoc.abarrena.trips.domain.exceptions.DestinationDuplicatedException;
 import edu.uoc.abarrena.trips.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.trips.domain.model.Destination;
 import edu.uoc.abarrena.trips.domain.repository.DestinationRepository;
+import edu.uoc.abarrena.trips.domain.service.DestinationService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

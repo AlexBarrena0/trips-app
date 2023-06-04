@@ -1,12 +1,12 @@
 package edu.uoc.abarrena.trips.domain.service.impl;
 
+import edu.uoc.abarrena.trips.application.security.SecurityHelper;
 import edu.uoc.abarrena.trips.domain.converter.CompanyConverter;
 import edu.uoc.abarrena.trips.domain.converter.TravelerConverter;
 import edu.uoc.abarrena.trips.domain.model.Company;
 import edu.uoc.abarrena.trips.domain.model.Traveler;
 import edu.uoc.abarrena.trips.domain.service.UserService;
 import edu.uoc.abarrena.trips.infrastructure.clients.UserServiceClient;
-import edu.uoc.abarrena.trips.application.security.SecurityHelper;
 import org.springframework.stereotype.Service;
 
 @Service

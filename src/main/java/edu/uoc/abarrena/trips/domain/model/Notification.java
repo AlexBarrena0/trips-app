@@ -18,8 +18,8 @@ public class Notification {
     private Boolean read;
     private HashMap<String, Object> params;
 
-    public Notification(NotificationType type, Long userId) {
-        this.type = type;
+    public Notification(NotificationType type, Long userId, HashMap<String, Object> params) {
+        this(type, params);
         this.userId = userId;
         this.read = false;
     }

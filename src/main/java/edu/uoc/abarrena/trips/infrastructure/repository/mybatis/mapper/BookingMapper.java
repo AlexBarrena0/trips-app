@@ -14,7 +14,7 @@ public interface BookingMapper {
     @Results(id = "bookingResultMap", value = {
             @Result(property = "id", column = "id"),
             @Result(property = "status", column = "status"),
-            @Result(property = "userId", column = "userId"),
+            @Result(property = "travelerId", column = "traveler_id"),
             @Result(property = "trip", column = "trip_id", one = @One(select = "edu.uoc.abarrena.trips.infrastructure.repository.mybatis.mapper.TripMapper.findById"))
     })
     @Select("SELECT * FROM BOOKING WHERE ID = #{id}")

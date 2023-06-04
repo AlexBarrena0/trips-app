@@ -14,7 +14,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface CruiseConverter {
 
-    public static final CruiseConverter INSTANCE = Mappers.getMapper(CruiseConverter.class);
+    CruiseConverter INSTANCE = Mappers.getMapper(CruiseConverter.class);
 
     CruiseDto toDto(Cruise cruise);
 

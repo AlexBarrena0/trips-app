@@ -11,6 +11,8 @@ import edu.uoc.abarrena.trips.domain.service.TripService;
 import edu.uoc.abarrena.trips.domain.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+
 @Service
 public class BookingServiceImpl implements BookingService {
 
@@ -44,7 +46,10 @@ public class BookingServiceImpl implements BookingService {
         }
         booking.setStatus(BookingStatus.PENDING.name());
         Long id = bookingRepository.save(booking);
-        notificationService.sendNotification(new Notification(NotificationType.RESERVATION_PENDING, trip.getCruise().getCompany().getId()));
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("travelerId", traveler.getId());
+        params.put("bookingId", id);
+        notificationService.sendNotification(new Notification(NotificationType.RESERVATION_PENDING, trip.getCruise().getCompany().getId(), params));
         return id;
     }
 
@@ -56,11 +61,13 @@ public class BookingServiceImpl implements BookingService {
         }
         bookingRepository.update(booking);
         Trip trip = tripService.findTripById(currentBooking.getTrip().getId());
-        if (currentBooking.getStatus().equals(BookingStatus.CONFIRMED.name())) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("cruiseId", trip.getCruise().getId());
+        if (booking.getStatus().equals(BookingStatus.CONFIRMED.name())) {
             tripService.bookPlace(currentBooking.getTrip().getId());
-            notificationService.sendNotification(new Notification(NotificationType.RESERVATION_CONFIRMED, trip.getCruise().getCompany().getId()));
-        } else if (currentBooking.getStatus().equals(BookingStatus.REJECTED.name())) {
-            notificationService.sendNotification(new Notification(NotificationType.RESERVATION_REJECTED, trip.getCruise().getCompany().getId()));
+            notificationService.sendNotification(new Notification(NotificationType.RESERVATION_CONFIRMED, currentBooking.getTravelerId(), params));
+        } else if (booking.getStatus().equals(BookingStatus.REJECTED.name())) {
+            notificationService.sendNotification(new Notification(NotificationType.RESERVATION_REJECTED, currentBooking.getTravelerId(), params));
         }
     }
 }

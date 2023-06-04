@@ -32,7 +32,7 @@ public class DomainConfig {
     }
 
     @Bean
-    public  BookingService bookingService(BookingRepository bookingRepository, TripService tripService, UserService userService, NotificationService notificationService) {
+    public BookingService bookingService(BookingRepository bookingRepository, TripService tripService, UserService userService, NotificationService notificationService) {
         return new BookingServiceImpl(bookingRepository, tripService, userService, notificationService);
     }
 

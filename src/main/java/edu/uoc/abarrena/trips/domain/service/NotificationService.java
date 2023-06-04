@@ -6,7 +6,8 @@ public interface NotificationService {
 
     /**
      * Send a notification
+     *
      * @param notification the notification to send
      */
-    public void sendNotification(Notification notification);
+    void sendNotification(Notification notification);
 }

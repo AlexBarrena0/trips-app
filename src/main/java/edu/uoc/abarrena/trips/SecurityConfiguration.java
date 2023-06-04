@@ -29,6 +29,7 @@ public class SecurityConfiguration {
 
     @Autowired
     private StoreTokenFilter storeTokenFilter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -40,7 +41,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((auth) -> auth
                         // Booking
                         .requestMatchers(HttpMethod.POST, "/bookings").hasAnyRole("TRAVELER")
-                        .requestMatchers(HttpMethod.PATCH, "/images/**").hasAnyRole("COMPANY")
+                        .requestMatchers(HttpMethod.PATCH, "/bookings/**").hasAnyRole("COMPANY")
                         // Cruise
                         .requestMatchers(HttpMethod.POST, "/cruises").hasAnyRole("COMPANY")
                         .requestMatchers(HttpMethod.GET, "/cruises/**").permitAll()
