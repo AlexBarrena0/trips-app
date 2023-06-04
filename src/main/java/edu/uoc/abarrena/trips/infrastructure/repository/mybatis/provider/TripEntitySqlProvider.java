@@ -36,7 +36,7 @@ public class TripEntitySqlProvider {
         } else {
             sql.append("AND START_DATE >= CURRENT_DATE ");
         }
-        sql.append("ORDER BY START_DATE DESC");
+        sql.append("ORDER BY START_DATE ASC");
         return sql.toString();
     }
 
