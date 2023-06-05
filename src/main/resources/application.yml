@@ -1,11 +1,11 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/?currentSchema=trips
+    url: jdbc:postgresql://db:5432/?currentSchema=trips
     username: abarrena0
     password: abarrena0_tfg
     driver-class-name: org.postgresql.Driver
   kafka:
-    bootstrap-servers: localhost:19092
+    bootstrap-servers: kafka:29092
 feign:
   client:
     config:
